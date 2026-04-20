@@ -1,6 +1,6 @@
 import { ArrowRightLeft } from 'lucide-react'
 import type { PropsWithChildren, ReactNode } from 'react'
-import { cn } from 'ui'
+import { Card, CardDescription, CardHeader, CardTitle, cn } from 'ui'
 
 import { BASE_PATH } from '@/lib/constants'
 
@@ -25,16 +25,24 @@ export const InterstitialLayout = ({
 }: PropsWithChildren<InterstitialLayoutProps>) => {
   return (
     <div className="flex min-h-screen w-full items-center justify-center bg-studio px-5">
-      <div className="w-full overflow-hidden rounded-xl border border-muted bg-surface-100 shadow md:w-[400px]">
+      <Card className="w-full rounded-xl shadow md:w-[400px]">
         {(logo || title || description) && (
-          <div className="p-6 pb-4 text-center">
+          <CardHeader className="items-center gap-0 px-6 py-6 text-center [--card-padding-x:1.5rem]">
             {logo && <div className="mb-4 flex justify-center">{logo}</div>}
-            {title && <h1 className="text-lg font-semibold text-foreground">{title}</h1>}
-            {description && <p className="text-sm text-foreground-light">{description}</p>}
-          </div>
+            {title && (
+              <CardTitle className="text-balance text-lg font-semibold normal-case text-foreground">
+                {title}
+              </CardTitle>
+            )}
+            {description && (
+              <CardDescription className="text-balance text-sm text-foreground-light">
+                {description}
+              </CardDescription>
+            )}
+          </CardHeader>
         )}
         {children}
-      </div>
+      </Card>
     </div>
   )
 }

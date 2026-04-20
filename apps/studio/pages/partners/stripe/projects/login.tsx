@@ -143,7 +143,7 @@ const StripeProjectsLoginPage: NextPageWithLayout = () => {
   const linkedOrg = effectiveAccountRequest?.linked_organization
   const emailMatches = effectiveAccountRequest?.email_matches ?? false
 
-  const displayName = username ?? primaryEmail ?? ''
+  const displayName = primaryEmail ?? username ?? ''
   const showSuccessBranch = effectiveIsSuccess && !effectiveIsConfirmed
 
   return (
@@ -251,7 +251,7 @@ const StripeProjectsLoginPage: NextPageWithLayout = () => {
               <ProfileImage
                 src={avatarUrl}
                 alt={displayName}
-                className="size-9 flex-shrink-0 rounded-md"
+                className="size-9 flex-shrink-0 rounded-full border border-muted"
               />
               <div className="min-w-0 flex-1">
                 <p className="text-xs text-foreground-light">Signed in as</p>
@@ -281,7 +281,7 @@ const StripeProjectsLoginPage: NextPageWithLayout = () => {
               Use a different account
             </Button>
 
-            <p className="text-center text-xs text-foreground-muted">
+            <p className="text-center text-xs text-foreground-muted text-balance">
               A new Supabase organization will be created and linked to your Stripe account.
             </p>
           </div>
@@ -314,7 +314,7 @@ StripeProjectsLoginPage.getLayout = (page) => (
       />
     }
     title="Stripe"
-    description="Wants to create a new Supabase organization"
+    description="wants to create a new Supabase organization"
   >
     {page}
   </InterstitialLayout>
