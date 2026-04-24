@@ -28,7 +28,7 @@
     "autoprefixer": "^10.4.27",
     "config": "workspace:*",
     "postcss": "^8.5.8",
-    "tailwindcss": "catalog:",
+    "tailwindcss": "4.2.4",
     "tsconfig": "workspace:*",
     "vite": "^7.3.2",
     "vite-tsconfig-paths": "catalog:"
