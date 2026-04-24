@@ -644,7 +644,7 @@ export default {
         active: `
           bg-selection z-10
           border-stronger
-          border-1
+          border
         `,
         radio_offset: 'left-4',
       },
@@ -680,7 +680,7 @@ export default {
         active: `
           bg-selection z-10
           border-stronger
-          border-1
+          border
         `,
         radio_offset: 'left-4',
       },
@@ -719,7 +719,7 @@ export default {
         `,
         active: `
           bg-selection z-10
-          border-stronger border-1
+          border-stronger border
         `,
         radio_offset: 'left-4',
       },
@@ -756,7 +756,7 @@ export default {
         active: `
           bg-selection z-10
           border-strong
-          border-1
+          border
         `,
         radio_offset: 'left-4',
       },
@@ -826,7 +826,7 @@ export default {
     header: `
       flex items-center
       space-y-1 py-4 px-4 bg-dash-sidebar sm:px-6
-      border-b h-[var(--header-height)]
+      border-b h-(--header-height)
     `,
     contents: `
       relative
@@ -923,11 +923,11 @@ export default {
         transition
         ease-in-out duration-200
       `,
-      tiny: '!h-3 !w-3',
-      small: '!h-5 !w-5',
-      medium: '!h-5 !w-5',
-      large: '!h-6 !w-6',
-      xlarge: '!h-6 !w-6',
+      tiny: 'h-3! w-3!',
+      small: 'h-5! w-5!',
+      medium: 'h-5! w-5!',
+      large: 'h-6! w-6!',
+      xlarge: 'h-6! w-6!',
     },
     handle_active: {
       tiny: ' translate-x-3 dark:bg-white',
