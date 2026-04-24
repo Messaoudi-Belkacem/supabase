@@ -163,7 +163,7 @@ export const DeleteProjectModal = ({
                         'pl-2 pr-3 text-center text-sm shadow-xs transition-all duration-100',
                         `${
                           active
-                            ? ` bg-foreground text-background opacity-100 hover:bg-opacity-75`
+                            ? ` bg-foreground text-background opacity-100 hover:bg-foreground/75`
                             : ` bg-border-strong text-foreground opacity-50 hover:opacity-75`
                         }`,
                       ].join(' ')}
@@ -182,7 +182,9 @@ export const DeleteProjectModal = ({
                 })}
               </div>
               <div className="text-area-text-sm flex flex-col gap-y-2">
-                <label className="text-sm whitespace-pre-line wrap-break-word">{textareaLabel}</label>
+                <label className="text-sm whitespace-pre-line wrap-break-word">
+                  {textareaLabel}
+                </label>
                 <Input.TextArea
                   name="message"
                   rows={3}

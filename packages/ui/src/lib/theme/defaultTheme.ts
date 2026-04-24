@@ -58,13 +58,6 @@ const defaults = {
   },
 }
 
-const utils = {
-  border: {
-    hover: 'border-opacity-50 hover:border-opacity-100',
-    fix: 'border-opacity-100',
-  },
-}
-
 const default__padding_and_text = {
   tiny: `${defaults.size.text.tiny} ${defaults.size.padding.tiny}`,
   small: `${defaults.size.text.small} ${defaults.size.padding.small}`,
@@ -219,31 +212,31 @@ export default {
    */
 
   badge: {
-    base: 'inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-normal bg-opacity-10',
+    base: 'inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-normal',
     size: {
       large: 'px-3 py-0.5 rounded-full text-sm',
     },
     dot: '-ml-0.5 mr-1.5 h-2 w-2 rounded-full',
     color: {
-      brand: 'bg-brand-500 text-brand-600 border border-brand-500',
-      brandAlt: 'bg-brand bg-opacity-100 text-background border border-brand',
+      brand: 'bg-brand-500/10 text-brand-600 border border-brand-500',
+      brandAlt: 'bg-brand/100 text-background border border-brand',
       scale: 'bg-background text-foreground-light border border-strong',
-      tomato: `bg-tomato-200 text-tomato-1100 border border-tomato-700`,
-      red: `bg-red-200 text-red-1100 border border-red-700`,
-      crimson: `bg-crimson-200 text-crimson-1100 border border-crimson-700`,
-      pink: `bg-pink-200 text-pink-1100 border border-pink-700`,
-      purple: `bg-purple-200 text-purple-1100 border border-purple-700`,
-      violet: `bg-violet-200 text-violet-1100 border border-violet-700`,
-      indigo: `bg-indigo-200 text-indigo-1100 border border-indigo-700`,
-      blue: `bg-blue-200 text-blue-1100 border border-blue-700`,
-      green: `bg-opacity-10 bg-brand-500 text-brand-600 border border-brand-500`,
-      grass: `bg-grass-200 text-grass-1100 border border-grass-700`,
-      orange: `bg-orange-200 text-orange-1100 border border-orange-700`,
-      yellow: `bg-yellow-200 text-yellow-1100 border border-yellow-700`,
-      amber: `bg-amber-200 text-amber-1100 border border-amber-700`,
-      gold: `bg-gold-200 text-gold-1100 border border-gold-700`,
-      gray: `bg-200 text-gray-1100 border border-gray-700`,
-      slate: `bg-slate-200 text-slate-1100 border border-slate-700`,
+      tomato: `bg-tomato-200/10 text-tomato-1100 border border-tomato-700`,
+      red: `bg-red-200/10 text-red-1100 border border-red-700`,
+      crimson: `bg-crimson-200/10 text-crimson-1100 border border-crimson-700`,
+      pink: `bg-pink-200/10 text-pink-1100 border border-pink-700`,
+      purple: `bg-purple-200/10 text-purple-1100 border border-purple-700`,
+      violet: `bg-violet-200/10 text-violet-1100 border border-violet-700`,
+      indigo: `bg-indigo-200/10 text-indigo-1100 border border-indigo-700`,
+      blue: `bg-blue-200/10 text-blue-1100 border border-blue-700`,
+      green: `bg-brand-500/10 text-brand-600 border border-brand-500`,
+      grass: `bg-grass-200/10 text-grass-1100 border border-grass-700`,
+      orange: `bg-orange-200/10 text-orange-1100 border border-orange-700`,
+      yellow: `bg-yellow-200/10 text-yellow-1100 border border-yellow-700`,
+      amber: `bg-amber-200/10 text-amber-1100 border border-amber-700`,
+      gold: `bg-gold-200/10 text-gold-1100 border border-gold-700`,
+      gray: `bg-gray-200/10 text-gray-1100 border border-gray-700`,
+      slate: `bg-slate-200/10 text-slate-1100 border border-slate-700`,
     },
   },
 
