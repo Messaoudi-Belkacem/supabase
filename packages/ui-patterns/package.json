@@ -804,7 +804,7 @@
     "mermaid": "^11.12.1",
     "mdast": "^3.0.0",
     "monaco-editor": "*",
-    "next-themes": "*",
+    "next-themes": "catalog:",
     "openai": "^4.75.1",
     "prism-react-renderer": "^2.3.1",
     "react": "catalog:",
