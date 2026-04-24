@@ -8,6 +8,10 @@
 
 @config '../tailwind.config.js';
 
+@theme {
+  --container-site: 128rem;
+}
+
 @layer base {
   :root {
     --chart-1: 12 76% 61%;
