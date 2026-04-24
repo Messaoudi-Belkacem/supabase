@@ -47,7 +47,7 @@ const EdgeFunctionSecret = ({ secret, onSelectEdit, onSelectDelete }: EdgeFuncti
             displayAs="utc"
             utcTimestamp={secret.updated_at}
             labelFormat="DD MMM YYYY HH:mm:ss (ZZ)"
-            className="!text-sm text-foreground-light whitespace-nowrap"
+            className="text-sm! text-foreground-light whitespace-nowrap"
           />
         ) : (
           '-'
@@ -92,7 +92,7 @@ const EdgeFunctionSecret = ({ secret, onSelectEdit, onSelectDelete }: EdgeFuncti
               <DropdownMenuItem asChild>
                 <ButtonTooltip
                   type="text"
-                  icon={<Trash size={14} className="group-[&:not(:disabled)]:text-destructive" />}
+                  icon={<Trash size={14} className="group-not-disabled:text-destructive" />}
                   className="w-full justify-start group text-inherit"
                   disabled={!canUpdateSecrets || isReservedSecret}
                   onClick={() => onSelectDelete()}

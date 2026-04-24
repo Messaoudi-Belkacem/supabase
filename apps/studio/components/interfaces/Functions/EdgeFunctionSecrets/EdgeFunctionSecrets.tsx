@@ -162,7 +162,7 @@ export const EdgeFunctionSecrets = () => {
                               <p className="text-sm text-foreground">No secrets created</p>
                               <p className="text-sm text-foreground-lighter">
                                 This project has no custom secrets yet.{' '}
-                                <code className="text-code-inline !text-foreground-lighter whitespace-nowrap">
+                                <code className="text-code-inline text-foreground-lighter! whitespace-nowrap">
                                   SUPABASE_*
                                 </code>{' '}
                                 <InlineLink

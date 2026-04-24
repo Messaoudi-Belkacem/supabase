@@ -176,7 +176,7 @@ export const DatabaseInfrastructureSection = ({
             </MetricCardHeader>
             <MetricCardContent>
               {infraError ? (
-                <div className="text-xs text-destructive break-words">{errorMessage}</div>
+                <div className="text-xs text-destructive wrap-break-word">{errorMessage}</div>
               ) : connections.max > 0 ? (
                 <MetricCardValue>
                   {connections.current}/{connections.max}
@@ -197,7 +197,7 @@ export const DatabaseInfrastructureSection = ({
             </MetricCardHeader>
             <MetricCardContent>
               {infraError ? (
-                <div className="text-xs text-destructive break-words">{errorMessage}</div>
+                <div className="text-xs text-destructive wrap-break-word">{errorMessage}</div>
               ) : metrics ? (
                 <MetricCardValue>{metrics.disk.current.toFixed(0)}%</MetricCardValue>
               ) : (
@@ -216,7 +216,7 @@ export const DatabaseInfrastructureSection = ({
             </MetricCardHeader>
             <MetricCardContent>
               {infraError ? (
-                <div className="text-xs text-destructive break-words">{errorMessage}</div>
+                <div className="text-xs text-destructive wrap-break-word">{errorMessage}</div>
               ) : metrics ? (
                 <MetricCardValue>{metrics.diskIo.current.toFixed(0)}%</MetricCardValue>
               ) : (
@@ -235,7 +235,7 @@ export const DatabaseInfrastructureSection = ({
             </MetricCardHeader>
             <MetricCardContent>
               {infraError ? (
-                <div className="text-xs text-destructive break-words">{errorMessage}</div>
+                <div className="text-xs text-destructive wrap-break-word">{errorMessage}</div>
               ) : metrics ? (
                 <MetricCardValue>{metrics.ram.current.toFixed(0)}%</MetricCardValue>
               ) : (
@@ -254,7 +254,7 @@ export const DatabaseInfrastructureSection = ({
             </MetricCardHeader>
             <MetricCardContent>
               {infraError ? (
-                <div className="text-xs text-destructive break-words">{errorMessage}</div>
+                <div className="text-xs text-destructive wrap-break-word">{errorMessage}</div>
               ) : metrics ? (
                 <MetricCardValue>{metrics.cpu.current.toFixed(0)}%</MetricCardValue>
               ) : (

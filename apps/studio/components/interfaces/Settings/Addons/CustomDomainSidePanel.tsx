@@ -148,7 +148,7 @@ const CustomDomainSidePanel = () => {
             page after enabling the add-on.
           </p>
 
-          <div className={cn('!mt-8 pb-4', !hasAccessToCustomDomain && 'opacity-75')}>
+          <div className={cn('mt-8! pb-4', !hasAccessToCustomDomain && 'opacity-75')}>
             <Radio.Group
               type="large-cards"
               size="tiny"
@@ -158,7 +158,7 @@ const CustomDomainSidePanel = () => {
               <Radio
                 name="custom-domain"
                 checked={selectedOption === 'cd_none'}
-                className="col-span-4 !p-0"
+                className="col-span-4 p-0!"
                 label="No custom domain"
                 value="cd_none"
               >
@@ -174,14 +174,14 @@ const CustomDomainSidePanel = () => {
                       <p className="text-foreground text-sm" translate="no">
                         $0
                       </p>
-                      <p className="text-foreground-light translate-y-[1px]"> / month</p>
+                      <p className="text-foreground-light translate-y-px"> / month</p>
                     </div>
                   </div>
                 </div>
               </Radio>
               {availableOptions.map((option) => (
                 <Radio
-                  className="col-span-4 !p-0"
+                  className="col-span-4 p-0!"
                   name="custom-domain"
                   key={option.identifier}
                   disabled={!hasAccessToCustomDomain}
@@ -201,7 +201,7 @@ const CustomDomainSidePanel = () => {
                         <p className="text-foreground text-sm" translate="no">
                           {formatCurrency(option.price)}
                         </p>
-                        <p className="text-foreground-light translate-y-[1px]"> / month</p>
+                        <p className="text-foreground-light translate-y-px"> / month</p>
                       </div>
                     </div>
                   </div>

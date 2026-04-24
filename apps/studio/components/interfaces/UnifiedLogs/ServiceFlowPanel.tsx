@@ -97,7 +97,7 @@ export function ServiceFlowPanel({
             'border-l fixed right-0 top-0 bottom-0',
             'md:absolute md:h-auto',
             // ' md:w-3/4',
-            'xl:z-[1]',
+            'xl:z-1',
             'xl:relative xl:border-l-0'
           )}
         >
@@ -228,7 +228,7 @@ export function ServiceFlowPanel({
                   )}
                   <CodeBlock
                     language="json"
-                    className="max-h-[800px] overflow-auto border-none rounded-none [&_pre]:!leading-tight [&_code]:!leading-tight"
+                    className="max-h-[800px] overflow-auto border-none rounded-none [&_pre]:leading-tight! [&_code]:leading-tight!"
                   >
                     {JSON.stringify(formattedJsonData, null, 2)}
                   </CodeBlock>

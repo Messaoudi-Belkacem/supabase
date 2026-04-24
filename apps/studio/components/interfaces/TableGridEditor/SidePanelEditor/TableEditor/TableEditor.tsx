@@ -395,7 +395,7 @@ export const TableEditor = ({
         {tableFields.isRLSEnabled ? (
           <Admonition
             type="default"
-            className="!mt-3"
+            className="mt-3!"
             title="Policies are required to query data"
             description={
               <>
@@ -415,7 +415,7 @@ export const TableEditor = ({
         ) : (
           <Admonition
             type="warning"
-            className="!mt-3"
+            className="mt-3!"
             title="You are allowing anonymous access to your table"
             description={
               <>

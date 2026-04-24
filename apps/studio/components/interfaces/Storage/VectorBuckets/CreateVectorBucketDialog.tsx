@@ -175,7 +175,7 @@ export const CreateVectorBucketDialog = ({
 
         <Form_Shadcn_ {...form}>
           <form id={formId} onSubmit={form.handleSubmit(onSubmit)}>
-            <DialogSection className="flex flex-col !p-0">
+            <DialogSection className="flex flex-col p-0!">
               <FormField_Shadcn_
                 key="name"
                 name="name"

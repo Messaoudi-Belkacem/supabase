@@ -304,7 +304,7 @@ export const EdgeFunctionRecentErrors = ({
                                   <div
                                     key={log.key}
                                     className={cn(
-                                      'break-words px-4',
+                                      'wrap-break-word px-4',
                                       log.level === 'error'
                                         ? 'bg-destructive-300 font-mono text-destructive'
                                         : 'text-foreground-light'

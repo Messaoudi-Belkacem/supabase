@@ -358,7 +358,7 @@ export const ForeignKeySelector = ({
                                 key="empty"
                                 value={''}
                                 label="---"
-                                className="!w-[170px]"
+                                className="w-[170px]!"
                               >
                                 ---
                               </Listbox.Option>
@@ -369,7 +369,7 @@ export const ForeignKeySelector = ({
                                     key={column.id}
                                     value={column.name}
                                     label={column.name}
-                                    className="!w-[170px]"
+                                    className="w-[170px]!"
                                   >
                                     <div className="flex items-center gap-2">
                                       <span className="text-foreground">{column.name}</span>
@@ -396,7 +396,7 @@ export const ForeignKeySelector = ({
                                 key="empty"
                                 value={''}
                                 label="---"
-                                className="!w-[170px]"
+                                className="w-[170px]!"
                               >
                                 ---
                               </Listbox.Option>
@@ -405,7 +405,7 @@ export const ForeignKeySelector = ({
                                   key={column.id}
                                   value={column.name}
                                   label={column.name}
-                                  className="!w-[170px]"
+                                  className="w-[170px]!"
                                 >
                                   <div className="flex items-center gap-2">
                                     <span className="text-foreground">{column.name}</span>

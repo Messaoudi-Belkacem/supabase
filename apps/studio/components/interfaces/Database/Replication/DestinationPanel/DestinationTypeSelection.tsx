@@ -54,7 +54,7 @@ export const DestinationTypeSelection = () => {
           'grid [&>button>div]:py-4 grid-cols-3',
           numberOfTypes === 3 && !editMode ? 'grid-cols-3' : 'grid-cols-2',
           '[&>button:first-of-type]:rounded-none [&>button:last-of-type]:rounded-none',
-          '[&>button:first-of-type]:!rounded-l-lg [&>button:last-of-type]:!rounded-r-lg'
+          '[&>button:first-of-type]:rounded-l-lg! [&>button:last-of-type]:rounded-r-lg!'
         )}
       >
         {((!editMode && infrastructureReadReplicas) ||

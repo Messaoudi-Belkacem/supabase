@@ -165,7 +165,7 @@ export const ForeignRowSelector = ({
         <div className="flex items-center justify-between">
           <p>
             Select a record to reference from{' '}
-            <code className="text-code-inline !text-sm">
+            <code className="text-code-inline text-sm!">
               {schemaName}.{tableName}
             </code>
           </p>
@@ -182,7 +182,7 @@ export const ForeignRowSelector = ({
       }
       onCancel={closePanel}
     >
-      <SidePanel.Content className="h-full !px-0">
+      <SidePanel.Content className="h-full px-0!">
         <div className="h-full">
           {isLoading && (
             <div className="flex h-full py-6 flex-col items-center justify-center space-y-2">

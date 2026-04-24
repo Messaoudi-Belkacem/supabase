@@ -527,7 +527,7 @@ export const SubscriptionPlanUpdateDialog = ({
                                           {allProjects.length > 0 && (
                                             <>
                                               <TableRow className="text-foreground-light">
-                                                <TableCell className="!py-2 px-0">
+                                                <TableCell className="py-2! px-0">
                                                   {planItem?.description}
                                                 </TableCell>
                                                 <TableCell
@@ -539,7 +539,7 @@ export const SubscriptionPlanUpdateDialog = ({
                                               </TableRow>
 
                                               <TableRow className="text-foreground-light">
-                                                <TableCell className="!py-2 px-0 flex items-center gap-1">
+                                                <TableCell className="py-2! px-0 flex items-center gap-1">
                                                   <span>Compute</span>
                                                 </TableCell>
                                                 <TableCell
@@ -561,7 +561,7 @@ export const SubscriptionPlanUpdateDialog = ({
                                                   className="text-foreground-light"
                                                 >
                                                   <TableCell
-                                                    className="!py-2 px-0 pl-6"
+                                                    className="py-2! px-0 pl-6"
                                                     translate="no"
                                                   >
                                                     {project.project_name} ({project.computeType}) |{' '}
@@ -572,7 +572,7 @@ export const SubscriptionPlanUpdateDialog = ({
                                               {computeCreditsItem && (
                                                 <TableRow className="text-foreground-light">
                                                   <TableCell
-                                                    className="!py-2 px-0 pl-6"
+                                                    className="py-2! px-0 pl-6"
                                                     translate="no"
                                                   >
                                                     Compute Credits |{' '}

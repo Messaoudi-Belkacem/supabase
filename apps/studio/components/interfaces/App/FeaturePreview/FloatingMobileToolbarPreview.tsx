@@ -22,7 +22,7 @@ export const FloatingMobileToolbarPreview = () => {
         alt="floating-mobile-toolbar-preview"
         className="rounded border"
       />
-      <div className="space-y-2 !mt-4">
+      <div className="space-y-2 mt-4!">
         <p className="text-sm">Enabling this preview will:</p>
         <ul className="list-disc pl-6 text-sm text-foreground-light space-y-1">
           <li>Show the floating toolbar at the bottom of the screen on mobile viewports</li>

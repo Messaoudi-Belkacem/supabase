@@ -206,7 +206,7 @@ CREATE INDEX ON "${selectedSchema}"."${selectedEntity}" USING ${selectedIndexTyp
                     onValueChange={setSchemaSearchTerm}
                   />
                   <CommandList_Shadcn_
-                    className={cn((schemas ?? []).length > 7 && '!max-h-[210px] overflow-y-auto')}
+                    className={cn((schemas ?? []).length > 7 && 'max-h-[210px]! overflow-y-auto')}
                     onWheel={(event) => event.stopPropagation()}
                   >
                     <CommandEmpty_Shadcn_>No schemas found</CommandEmpty_Shadcn_>
@@ -287,7 +287,7 @@ CREATE INDEX ON "${selectedSchema}"."${selectedEntity}" USING ${selectedIndexTyp
                     onValueChange={handleSearchChange}
                   />
                   <CommandList_Shadcn_
-                    className={cn(entityTypes.length > 7 && '!max-h-[210px] overflow-y-auto')}
+                    className={cn(entityTypes.length > 7 && 'max-h-[210px]! overflow-y-auto')}
                     onWheel={(event) => event.stopPropagation()}
                   >
                     <CommandEmpty_Shadcn_>
@@ -371,7 +371,7 @@ CREATE INDEX ON "${selectedSchema}"."${selectedEntity}" USING ${selectedIndexTyp
                             <span>{index.name}</span>
                             {index.description.split('\n').map((x, idx) => (
                               <span
-                                className="text-foreground-lighter group-focus:text-foreground-light group-data-[state=checked]:text-foreground-light"
+                                className="text-foreground-lighter group-focus:text-foreground-light group-data-checked:text-foreground-light"
                                 key={`${index.value}-description-${idx}`}
                               >
                                 {x}
@@ -388,7 +388,7 @@ CREATE INDEX ON "${selectedSchema}"."${selectedEntity}" USING ${selectedIndexTyp
               {isOrioleDb && (
                 <Admonition
                   type="default"
-                  className="!mt-2"
+                  className="mt-2!"
                   title="OrioleDB currently only supports the B-tree index type"
                   description="More index types may be supported when OrioleDB is no longer in preview"
                 >
@@ -414,7 +414,7 @@ CREATE INDEX ON "${selectedSchema}"."${selectedEntity}" USING ${selectedIndexTyp
                 </Button>
               </div>
             </SidePanel.Content>
-            <div className="h-[200px] !mt-2">
+            <div className="h-[200px] mt-2!">
               <div className="relative h-full">
                 <CodeEditor
                   isReadOnly

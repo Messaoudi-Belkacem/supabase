@@ -163,7 +163,7 @@ export const CreateFunction = ({
       <SheetContent
         showClose={false}
         size={'default'}
-        className={'p-0 flex flex-row gap-0 !min-w-screen lg:!min-w-[600px]'}
+        className={'p-0 flex flex-row gap-0 min-w-screen! lg:min-w-[600px]!'}
       >
         <div className="flex flex-col grow w-full">
           <CreateFunctionHeader selectedFunction={func?.name} isDuplicating={isDuplicating} />
@@ -246,7 +246,7 @@ export const CreateFunction = ({
                 <FormFieldArgs readonly={isEditing} />
               </SheetSection>
               <Separator className={focusedEditor ? 'hidden' : ''} />
-              <SheetSection className={`${focusedEditor ? 'h-full' : ''} !px-0`}>
+              <SheetSection className={`${focusedEditor ? 'h-full' : ''} px-0!`}>
                 <FormField_Shadcn_
                   control={form.control}
                   name="definition"
