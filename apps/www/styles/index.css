@@ -4,21 +4,88 @@
 @import './../../../packages/ui/build/css/themes/dark.css';
 @import './../../../packages/ui/build/css/themes/light.css';
 
-@config '..//tailwind.config.js';
+@config '../tailwind.config.js';
 
-@layer utilities {
-  .run {
-    animation-play-state: running;
-  }
-  .pause {
-    animation-play-state: paused;
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: hsl(var(--border-default));
   }
 }
 
-@layer components {
-  .disable-blur {
-    image-rendering: -webkit-optimize-contrast;
-  }
+@utility run {
+  animation-play-state: running;
+}
+
+@utility pause {
+  animation-play-state: paused;
+}
+
+@utility disable-blur {
+  image-rendering: -webkit-optimize-contrast;
+}
+
+@utility gradient-text-brand-100 {
+  background-image: linear-gradient(
+    45deg,
+    hsl(var(--brand-500)) 0%,
+    hsl(var(--brand-default)) 100%
+  );
+}
+
+@utility gradient-text-brand-300 {
+  background-image: linear-gradient(
+    45deg,
+    hsl(var(--brand-500)) 0%,
+    hsl(var(--brand-default)) 100%
+  );
+}
+
+@utility gradient-text-100 {
+  background-image: -webkit-linear-gradient(45deg, #fff 0%, var(--colors-green12) 100%);
+}
+
+@utility gradient-text-500 {
+  background-image: -webkit-linear-gradient(
+    45deg,
+    hsl(var(--foreground-lighter)) 0%,
+    hsl(var(--foreground-default)) 100%
+  );
+}
+
+@utility gradient-text-pink-500 {
+  @apply text-transparent bg-clip-text bg-linear-to-br from-[#c867ee] to-[#f6a4f3];
+}
+
+@utility gradient-text-purple-500 {
+  @apply text-transparent bg-clip-text bg-linear-to-br from-[#902DFB] to-[#D87BF5];
+}
+
+@utility gradient-text-purple-800 {
+  @apply text-transparent bg-clip-text bg-linear-to-br from-[#5900EA] to-[#A242E5];
+}
+
+@utility gradient-text-gold-500 {
+  background-image: -webkit-linear-gradient(45deg, #e4b641 100%, #f5bf0069 41%);
+}
+
+@utility radial-gradient-text-500 {
+  background: radial-gradient(45% 100% at 50% 50%, #fff 30%, hsla(0, 0%, 100%, 0.35) 100%);
+}
+
+@utility radial-gradient-text-600 {
+  background: radial-gradient(45% 100% at 50% 50%, #fff 30%, hsla(0, 0%, 100%, 0.6) 100%);
 }
 
 @font-face {
@@ -110,15 +177,15 @@ h6:not(.overwrite) {
 }
 
 .heading-gradient {
-  @apply text-[#F4FFFA00] bg-clip-text bg-gradient-to-b from-foreground to-foreground/70;
+  @apply text-[#F4FFFA00] bg-clip-text bg-linear-to-b from-foreground to-foreground/70;
 }
 
 .heading-gradient-brand {
-  @apply text-[#3ECF8E00] bg-clip-text bg-gradient-to-b from-brand to-brand/80;
+  @apply text-[#3ECF8E00] bg-clip-text bg-linear-to-b from-brand to-brand/80;
 }
 
 .toc-animate {
-  @apply !translate-x-1 !text-brand;
+  @apply translate-x-1! text-brand!;
 }
 
 .prose-toc a {
@@ -256,7 +323,7 @@ table {
 }
 
 .sbui-typography a {
-  @apply break-words;
+  @apply wrap-break-word;
 }
 
 /*
@@ -273,7 +340,7 @@ table {
 }
 .next-image--dynamic-fill.wide,
 video.wide {
-  @apply sm:my-0 sm:max-w-none sm:-mx-8 sm:w-[calc(100%_+_4rem)];
+  @apply sm:my-0 sm:max-w-none sm:-mx-8 sm:w-[calc(100%+4rem)];
 }
 @media (min-width: 560px) {
   .next-image--dynamic-fill.wide,
@@ -371,7 +438,7 @@ launch week
 }
 
 .video-container.no-border {
-  @apply !border-none;
+  @apply border-none!;
 }
 
 .video-container iframe {
@@ -645,57 +712,6 @@ launch week
   -webkit-text-fill-color: white;
 }
 
-@layer utilities {
-  .gradient-text-brand-100 {
-    background-image: linear-gradient(
-      45deg,
-      hsl(var(--brand-500)) 0%,
-      hsl(var(--brand-default)) 100%
-    );
-  }
-  .gradient-text-brand-300 {
-    background-image: linear-gradient(
-      45deg,
-      hsl(var(--brand-500)) 0%,
-      hsl(var(--brand-default)) 100%
-    );
-  }
-  .gradient-text-100 {
-    background-image: -webkit-linear-gradient(45deg, #fff 0%, var(--colors-green12) 100%);
-  }
-
-  .gradient-text-500 {
-    background-image: -webkit-linear-gradient(
-      45deg,
-      hsl(var(--foreground-lighter)) 0%,
-      hsl(var(--foreground-default)) 100%
-    );
-  }
-
-  .gradient-text-pink-500 {
-    @apply text-transparent bg-clip-text bg-gradient-to-br from-[#c867ee] to-[#f6a4f3];
-  }
-
-  .gradient-text-purple-500 {
-    @apply text-transparent bg-clip-text bg-gradient-to-br from-[#902DFB] to-[#D87BF5];
-  }
-
-  .gradient-text-purple-800 {
-    @apply text-transparent bg-clip-text bg-gradient-to-br from-[#5900EA] to-[#A242E5];
-  }
-
-  .gradient-text-gold-500 {
-    background-image: -webkit-linear-gradient(45deg, #e4b641 100%, #f5bf0069 41%);
-  }
-
-  .radial-gradient-text-500 {
-    background: radial-gradient(45% 100% at 50% 50%, #fff 30%, hsla(0, 0%, 100%, 0.35) 100%);
-  }
-  .radial-gradient-text-600 {
-    background: radial-gradient(45% 100% at 50% 50%, #fff 30%, hsla(0, 0%, 100%, 0.6) 100%);
-  }
-}
-
 /* LW7 Tickets Slider */
 .ticket-brick-swiper .swiper-slide {
   width: 230px;
@@ -731,7 +747,7 @@ launch week
   transition-timing-function: cubic-bezier(0.24, 0.25, 0.05, 1) !important;
 }
 [data-rmiz-modal-overlay='visible'] {
-  @apply !bg-background;
+  @apply bg-background!;
   opacity: 0.8;
 }
 [data-rmiz-modal-img] {

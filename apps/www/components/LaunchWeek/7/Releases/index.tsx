@@ -164,11 +164,11 @@ export default function LW7Releases() {
 
   return (
     <>
-      <SectionContainer className="!py-0 w-full !px-0 !max-w-none">
+      <SectionContainer className="py-0! w-full px-0! max-w-none!">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 scroll-mt-[105px]" id="hackathon">
           <SmallCard
             bgGradient
-            className={[isHackathonLive && '!from-[#4635A7] !to-[#A69DC920]'].join(' ')}
+            className={[isHackathonLive && 'from-[#4635A7]! to-[#A69DC920]!'].join(' ')}
           >
             <div className="relative z-10 flex items-center mb-4 sm:mb-0">
               <div
@@ -205,7 +205,7 @@ export default function LW7Releases() {
               </ChipLink>
             </div>
             {isHackathonLive && (
-              <div className="absolute opacity-pulse inset-0 w-full h-full bg-gradient-to-b from-[#1C1C1C80] to-[#1C1C1C] rounded-2xl overflow-hidden shadow-lg pointer-events-none" />
+              <div className="absolute opacity-pulse inset-0 w-full h-full bg-linear-to-b from-[#1C1C1C80] to-[#1C1C1C] rounded-2xl overflow-hidden shadow-lg pointer-events-none" />
             )}
           </SmallCard>
           <SmallCard bgGradient>
@@ -237,14 +237,14 @@ export default function LW7Releases() {
               </div>
             </div>
             <div className="flex w-full sm:w-auto justify-center gap-2 z-10">
-              <ChipLink href="#lw-7-prizes" className="!pr-3 !justify-center">
+              <ChipLink href="#lw-7-prizes" className="pr-3! justify-center!">
                 More info
               </ChipLink>
             </div>
           </SmallCard>
         </div>
       </SectionContainer>
-      <SectionContainer className="!pt-0 !w-full !px-0 !max-w-none">
+      <SectionContainer className="pt-0! w-full! px-0! max-w-none!">
         <Accordion
           type="default"
           openBehaviour="multiple"
@@ -416,7 +416,7 @@ export default function LW7Releases() {
                             <motion.div
                               className={[
                                 'absolute inset-0 w-full h-full -z-10',
-                                i === 3 && '!mix-blend-overlay blur-2xl',
+                                i === 3 && 'mix-blend-overlay! blur-2xl',
                               ].join(' ')}
                               variants={getDay1Motion(i)}
                             >
@@ -490,7 +490,7 @@ export default function LW7Releases() {
                             <motion.div
                               className={[
                                 'absolute inset-0 w-full h-full -z-10',
-                                i === 3 && '!mix-blend-overlay blur-2xl',
+                                i === 3 && 'mix-blend-overlay! blur-2xl',
                               ].join(' ')}
                               variants={getDay2Motion(i)}
                             >
@@ -564,7 +564,7 @@ export default function LW7Releases() {
                             <motion.div
                               className={[
                                 'absolute inset-0 w-full h-full -z-10',
-                                i === 2 && '!mix-blend-overlay blur-2xl',
+                                i === 2 && 'mix-blend-overlay! blur-2xl',
                               ].join(' ')}
                               variants={getDay3Motion(i)}
                             >

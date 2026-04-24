@@ -32,7 +32,7 @@ const TwoOptionToggle = ({
         style={{ width, translate: activeOption === options[1] ? '0px' : `${width - 2}px` }}
         aria-hidden="true"
         className={cn(
-          'z-0 inline-block rounded h-full bg-overlay-hover shadow transform',
+          'z-0 inline-block rounded-sm h-full bg-overlay-hover shadow-sm transform',
           'transition-all ease-in-out border border-strong'
         )}
       ></span>

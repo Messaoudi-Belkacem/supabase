@@ -12,8 +12,8 @@ export default function FeaturesGrid(props: any) {
   return (
     <SectionContainer id={props.id} className="flex flex-col gap-4 xl:pt-20 scroll-mt-20">
       <div className="flex flex-col gap-2 max-w-xl">
-        <h2 className="h2 text-foreground-lighter !m-0">{props.heading}</h2>
-        <p className="p !text-foreground-lighter max-w-md">{props.subheading}</p>
+        <h2 className="h2 text-foreground-lighter m-0!">{props.heading}</h2>
+        <p className="p text-foreground-lighter! max-w-md">{props.subheading}</p>
       </div>
       <div
         className={cn(
@@ -23,7 +23,7 @@ export default function FeaturesGrid(props: any) {
       >
         <Content
           card={props.features.find((f: any) => f.id === 'postgres')}
-          innerClassName="[&_.image-container]:xl:pt-4 [&_.image-container]:xl:pl-8"
+          innerClassName="xl:[&_.image-container]:pt-4 xl:[&_.image-container]:pl-8"
         />
         <Content card={props.features.find((f: any) => f.id === 'pricing')} />
         <Content
@@ -32,10 +32,10 @@ export default function FeaturesGrid(props: any) {
             xl:flex-row
             [&_.image-container]:border-b
             [&_.image-container]:pb-0
-            [&_.image-container]:xl:border-none
-            [&_.image-container]:xl:items-end
-            [&_.image-container]:xl:order-last
-            [&_.image-container]:xl:w-[calc(50%+1rem)]
+            xl:[&_.image-container]:border-none
+            xl:[&_.image-container]:items-end
+            xl:[&_.image-container]:order-last
+            xl:[&_.image-container]:w-[calc(50%+1rem)]
             [&_.next-image--dynamic-fill]:rounded-none"
         />
         <Content card={props.features.find((f: any) => f.id === 'branching')} />
@@ -47,10 +47,10 @@ export default function FeaturesGrid(props: any) {
             xl:flex-row
             [&_.image-container]:border-b
             [&_.image-container]:pb-0
-            [&_.image-container]:xl:border-none
-            [&_.image-container]:xl:items-end
-            [&_.image-container]:xl:order-last
-            [&_.image-container]:xl:w-[calc(50%+1rem)]
+            xl:[&_.image-container]:border-none
+            xl:[&_.image-container]:items-end
+            xl:[&_.image-container]:order-last
+            xl:[&_.image-container]:w-[calc(50%+1rem)]
             [&_.next-image--dynamic-fill]:rounded-none"
         />
       </div>

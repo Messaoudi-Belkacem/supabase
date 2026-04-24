@@ -144,11 +144,11 @@ const data: () => {
       subheading:
         'Supabase includes everything you need to create the perfect app for your brand, business, or just for fun.',
       className: cn(
-        '[&_div.grid]:sm:divide-x [&_div.grid]:divide-y',
-        '[&_div.grid>div:nth-child(2n+2)]:sm:!border-l-0',
-        '[&_div.grid>div:nth-child(2n+2)]:lg:!border-l',
-        '[&_div.grid>div:nth-child(3n+3)]:lg:!border-l-0',
-        '[&_div.grid>div:nth-child(2)]:lg:!border-t-0'
+        'sm:[&_div.grid]:divide-x [&_div.grid]:divide-y',
+        'sm:[&_div.grid>div:nth-child(2n+2)]:border-l-0!',
+        'lg:[&_div.grid>div:nth-child(2n+2)]:border-l!',
+        'lg:[&_div.grid>div:nth-child(3n+3)]:border-l-0!',
+        'lg:[&_div.grid>div:nth-child(2)]:border-t-0!'
       ),
       features: [
         {
@@ -277,7 +277,7 @@ const data: () => {
               more. Secure and trusted.
             </>
           ),
-          image: <AuthVisual className="2xl:!-bottom-20" />,
+          image: <AuthVisual className="2xl:-bottom-20!" />,
         },
         {
           id: 'storage',

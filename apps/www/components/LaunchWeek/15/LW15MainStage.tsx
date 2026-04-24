@@ -28,7 +28,7 @@ const LW15MainStage = ({ className }: { className?: string }) => {
     <div className="relative pb-8 lg:pb-24 overflow-hidden">
       <SectionContainer
         className={cn(
-          'relative !max-w-none !pb-4 md:pb-4 !pt-8 xl:!pt-10 lg:!container flex flex-col gap-4',
+          'relative max-w-none! pb-4! md:pb-4 pt-8! xl:pt-10! lg:container! flex flex-col gap-4',
           className
         )}
         id="main-stage"
@@ -73,7 +73,7 @@ const DayCard = ({ day }: { day: WeekDayProps }) =>
   ) : (
     <div
       className={cn(
-        'group/main block w-full bg-surface-200 dark:bg-transparent h-full xl:flex-1 xl:h-auto xl:aspect-[217/275] relative overflow-hidden rounded border dark:border-muted'
+        'group/main block w-full bg-surface-200 dark:bg-transparent h-full xl:flex-1 xl:h-auto xl:aspect-217/275 relative overflow-hidden rounded-sm border dark:border-muted'
       )}
     >
       <div className="w-full h-full relative z-10 flex flex-col justify-between gap-4">
@@ -105,24 +105,24 @@ const DayCardShipped = ({ day }: { day: WeekDayProps }) => {
   return (
     <div
       className={cn(
-        'group/main block w-full h-full xl:flex-1 xl:h-auto xl:aspect-[217/275] relative overflow-hidden rounded border border-strong text-white',
+        'group/main block w-full h-full xl:flex-1 xl:h-auto xl:aspect-217/275 relative overflow-hidden rounded-sm border border-strong text-white',
         day.isToday && 'ring-1 ring-foreground-lighter ring-offset-2 ring-offset-background'
       )}
     >
       <CardBG day={day} />
       <div className="w-full h-full relative z-10 flex flex-col justify-between gap-4 overflow-hidden">
-        <ul className="flex flex-col gap-1 p-4 pb-0 lg:opacity-0 lg:blur-lg duration-300 group-hover/main:lg:blur-none transition-all group-hover/main:lg:opacity-100">
+        <ul className="flex flex-col gap-1 p-4 pb-0 lg:opacity-0 lg:blur-lg duration-300 lg:group-hover/main:blur-none transition-all lg:group-hover/main:opacity-100">
           {day.links?.map((link) => (
             <li key={link.href}>
               <DayLink
                 {...link}
-                className="transition-all duration-300 !ease-[cubic-bezier(.25,.25,0,1)] lg:-translate-y-full lg:opacity-0 group-hover/main:translate-y-0 group-hover/main:opacity-100"
+                className="transition-all duration-300 ease-[cubic-bezier(.25,.25,0,1)]! lg:-translate-y-full lg:opacity-0 group-hover/main:translate-y-0 group-hover/main:opacity-100"
               />
             </li>
           ))}
         </ul>
         <div
-          className="flex flex-col p-4 pt-0 gap-2 relative group-hover/main:!bottom-0 !ease-[cubic-bezier(.25,.25,0,1)] duration-300"
+          className="flex flex-col p-4 pt-0 gap-2 relative group-hover/main:bottom-0! ease-[cubic-bezier(.25,.25,0,1)]! duration-300"
           style={{
             bottom: isTablet ? 0 : -hiddenHeight + 'px',
           }}
@@ -130,7 +130,7 @@ const DayCardShipped = ({ day }: { day: WeekDayProps }) => {
           <span className="text-lg opacity-60">{day.date}</span>
           <h4 className="text-xl leading-snug">{day.title}</h4>
           <div
-            className="block lg:opacity-0 lg:blur-lg duration-300 group-hover/main:lg:blur-none transition-all group-hover/main:lg:opacity-100"
+            className="block lg:opacity-0 lg:blur-lg duration-300 lg:group-hover/main:blur-none transition-all lg:group-hover/main:opacity-100"
             ref={hiddenRef}
           >
             <Button type="outline" size="small" className="text-current rounded-xs border-dashed">
@@ -153,9 +153,9 @@ const CardBG = ({ day }: { day: WeekDayProps }) => (
               key={`${day.title}-image-${i}?v=3`}
               className={cn(
                 'absolute inset-0 w-full h-full -z-10',
-                'transition-all duration-300 !ease-[cubic-bezier(.24,0,.22,.99)]',
+                'transition-all duration-300 ease-[cubic-bezier(.24,0,.22,.99)]!',
                 'dark:opacity-50 scale-100',
-                'group-hover/main:dark:opacity-100'
+                'dark:group-hover/main:opacity-100'
               )}
             >
               <Image
@@ -174,7 +174,7 @@ const CardBG = ({ day }: { day: WeekDayProps }) => (
           )}
         </>
       ))}
-    <div className="absolute inset-0 z-0 w-full h-full bg-gradient-to-b from-black/80 via-black/30 to-black/90" />
+    <div className="absolute inset-0 z-0 w-full h-full bg-linear-to-b from-black/80 via-black/30 to-black/90" />
   </div>
 )
 
@@ -221,10 +221,10 @@ const CardsSlider: React.FC<Props> = ({
       controller={{ control: controlledSwiper }}
       updateOnWindowResize
       allowTouchMove
-      className="!w-full !overflow-visible"
+      className="w-full! overflow-visible!"
     >
       {slides.map((day: WeekDayProps, i: number) => (
-        <SwiperSlide className={cn('flex w-full aspect-[217/275]')} key={`${day.id}-mobile-${i}`}>
+        <SwiperSlide className={cn('flex w-full aspect-217/275')} key={`${day.id}-mobile-${i}`}>
           <DayCard day={day} />
         </SwiperSlide>
       ))}

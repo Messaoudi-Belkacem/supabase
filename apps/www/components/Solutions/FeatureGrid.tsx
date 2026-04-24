@@ -24,12 +24,12 @@ const FeatureGrid = ({ id, features, className }: FeatureGridProps) => {
         className="
           grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3
           sm:divide-x divide-y border border-default rounded-md overflow-hidden
-          [&>div:nth-child(2n+1)]:sm:!border-l-0
-          [&>div:nth-child(2)]:sm:!border-t-0
-          [&>div:nth-child(3)]:lg:!border-t-0
-          [&>div:nth-child(3n)]:lg:!border-l
-          [&>div:nth-child(4n)]:lg:!border-l-0
-          [&>div:nth-child(3n-1)]:lg:!border-l
+          sm:[&>div:nth-child(2n+1)]:border-l-0!
+          sm:[&>div:nth-child(2)]:border-t-0!
+          lg:[&>div:nth-child(3)]:border-t-0!
+          lg:[&>div:nth-child(3n)]:border-l!
+          lg:[&>div:nth-child(4n)]:border-l-0!
+          lg:[&>div:nth-child(3n-1)]:border-l!
         "
       >
         {features.map((feature) => (

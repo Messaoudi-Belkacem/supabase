@@ -193,7 +193,7 @@ function BlogFilters({ onFilterChange, view, setView }: Props) {
                 ? 'default'
                 : category === activeCategory
                   ? 'default'
-                  : 'outline'
+                  : 'outline-solid'
             }
             onClick={() => handleSetCategory(category)}
             size={is2XL ? 'tiny' : 'small'}

@@ -65,7 +65,7 @@ const InnovationTeams: NextPage = () => {
               role: data.secondaryQuote.role,
               logo: data.secondaryQuote.logo,
             }}
-            className="!pt-0"
+            className="pt-0!"
           />
         )}
         {/* AI Builder Ecosystem Section */}

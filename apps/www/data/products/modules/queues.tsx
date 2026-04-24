@@ -32,14 +32,14 @@ export default () => ({
   },
   highlightsSection: {
     className: `
-        !py-4
-        [&_.highlights-grid]:sm:grid-cols-2
-        [&_.highlight-card]:sm:col-span-1
-        [&_.highlight-card:nth-child(1)]:sm:col-span-2
-        [&_.highlights-grid]:lg:grid-cols-6
-        [&_.highlight-card]:lg:col-span-2
-        [&_.highlight-card:nth-child(1)]:lg:col-span-3
-        [&_.highlight-card:nth-child(2)]:lg:col-span-3
+        py-4!
+        sm:[&_.highlights-grid]:grid-cols-2
+        sm:[&_.highlight-card]:col-span-1
+        sm:[&_.highlight-card:nth-child(1)]:col-span-2
+        lg:[&_.highlights-grid]:grid-cols-6
+        lg:[&_.highlight-card]:col-span-2
+        lg:[&_.highlight-card:nth-child(1)]:col-span-3
+        lg:[&_.highlight-card:nth-child(2)]:col-span-3
       `,
     highlights: [
       {
@@ -159,7 +159,7 @@ export default () => ({
         contentClassName="aspect-video border overflow-hidden rounded-lg"
         hasFrameButtons={false}
       >
-        <div className="video-container !border-none !rounded-none">
+        <div className="video-container border-none! rounded-none!">
           <iframe
             src="https://www.youtube-nocookie.com/embed/UEwfaElBnZk"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -218,7 +218,7 @@ export default () => ({
         draggable={false}
       />
     ),
-    className: 'md:!pt-0',
+    className: 'md:pt-0!',
   },
   section3: {
     id: 'ui',
@@ -244,6 +244,6 @@ export default () => ({
         draggable={false}
       />
     ),
-    className: 'md:!pt-0',
+    className: 'md:pt-0!',
   },
 })

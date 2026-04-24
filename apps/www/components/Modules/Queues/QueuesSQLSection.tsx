@@ -42,17 +42,17 @@ const QueuesSQLSection: FC<Props> = (props) => {
             code={codeSnippet}
             lang="sql"
             className="
-              h-full xl:!text-lg
-              [&_.synthax-highlighter]:!pb-8
-              [&_.synthax-highlighter]:xl:min-h-[240px]
+              h-full xl:text-lg!
+              [&_.synthax-highlighter]:pb-8!
+              xl:[&_.synthax-highlighter]:min-h-[240px]
             "
           />
         </div>
       </ul>
       <div className="flex order-first md:order-last flex-col gap-2 max-w-md">
         <span className="label">{props.label}</span>
-        <h2 className="h2 !m-0">{props.heading}</h2>
-        <p className="p !text-foreground-lighter">{props.subheading}</p>
+        <h2 className="h2 m-0!">{props.heading}</h2>
+        <p className="p text-foreground-lighter!">{props.subheading}</p>
         {props.cta && (
           <TextLink hasChevron label={props.cta.label} url={props.cta.url} className="mt-2" />
         )}

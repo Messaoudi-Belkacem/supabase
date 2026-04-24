@@ -314,7 +314,7 @@ function ChangelogPage({ changelog, pageInfo, restPage }: ChangelogPageProps) {
                 "
                       >
                         <div className="flex w-full items-baseline gap-6">
-                          <div className="bg-border border-muted text-foreground-lighter -ml-2.5 flex h-5 w-5 items-center justify-center rounded border drop-shadow-xs">
+                          <div className="bg-border border-muted text-foreground-lighter -ml-2.5 flex h-5 w-5 items-center justify-center rounded-sm border drop-shadow-xs">
                             <GitCommit size={14} strokeWidth={1.5} />
                           </div>
                           <div className="flex w-full flex-col gap-1">
@@ -330,7 +330,7 @@ function ChangelogPage({ changelog, pageInfo, restPage }: ChangelogPageProps) {
                         </div>
                       </div>
                       <div className="col-span-8 ml-8 lg:ml-0 max-w-[calc(100vw-80px)]">
-                        <article className="prose prose-docs max-w-none [overflow-wrap:break-word]">
+                        <article className="prose prose-docs max-w-none wrap-break-word">
                           <MDXRemote {...entry.source} components={mdxComponents('blog')} />
                         </article>
                       </div>

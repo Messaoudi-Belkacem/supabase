@@ -139,7 +139,7 @@ export default function AuthorClient({ author, authorId, blogs }: AuthorClientPr
               {filteredBlogs.map((blog: PostTypes, idx: number) =>
                 isList ? (
                   <div
-                    className="col-span-12 px-2 sm:px-4 [&_a]:last:border-none"
+                    className="col-span-12 px-2 sm:px-4 last:[&_a]:border-none"
                     key={`list-${idx}-${blog.slug}`}
                   >
                     <BlogListItem post={blog} />

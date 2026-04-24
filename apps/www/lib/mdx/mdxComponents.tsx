@@ -75,7 +75,7 @@ const BlogCollapsible = ({
         [&>svg]:fill-current
         [&>svg]:rotate-90
         [&>svg]:transition-transform
-        [&>svg]:data-[state='open']:rotate-180
+        data-[state='open']:[&>svg]:rotate-180
         [&>svg]:data-[state='open']:text
         "
       >
