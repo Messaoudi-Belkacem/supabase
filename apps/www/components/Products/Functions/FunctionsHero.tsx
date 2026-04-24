@@ -1,7 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react'
-import Image from 'next/image'
 import { createTimeline } from 'animejs'
 import { Check, Copy } from 'lucide-react'
+import Image from 'next/image'
+import React, { useEffect, useRef, useState } from 'react'
 import CopyToClipboard from 'react-copy-to-clipboard'
 import Typed from 'typed.js'
 
@@ -262,7 +262,7 @@ const FunctionsHero = () => {
         </div>
       ))}
       <div className="absolute left-[51.15%] top-[10%] w-px h-[20%] overflow-hidden">
-        <span className="absolute inset-0 w-full bg-linear-to-t from-current to-transparent h-full delay-1200 animate-slide-in" />
+        <span className="absolute inset-0 w-full bg-linear-to-t from-current to-transparent h-full delay-[1200ms] animate-slide-in" />
       </div>
       {/* Globe background */}
       <Image

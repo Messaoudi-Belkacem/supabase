@@ -7,6 +7,13 @@
 
 @config '../tailwind.config.cjs';
 
+@utility prose--remove-p-margin {
+  /* prose (tailwind typography) helper for removing margins in prose styled sections */
+  & p {
+    margin: 0;
+  }
+}
+
 @font-face {
   font-family: 'custom-font';
   src:
