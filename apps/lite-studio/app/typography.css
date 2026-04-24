@@ -1,6 +1,4 @@
-@import 'tailwindcss';
-@config '../../../packages/config/tailwind.config.js';
-
+@reference './app.css';
 
 
 /* Heading */
