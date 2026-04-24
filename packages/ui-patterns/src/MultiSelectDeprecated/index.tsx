@@ -121,7 +121,7 @@ export default function MultiSelect({
 
   return (
     <div className={`form-group ${disabled ? 'pointer-events-none opacity-50' : ''}`}>
-      {label && <label className="!w-full">{label}</label>}
+      {label && <label className="w-full!">{label}</label>}
       <div
         className={[
           'form-control form-control--multi-select',
@@ -177,7 +177,7 @@ export default function MultiSelect({
             style={{ width, marginLeft: '-5px' }}
           >
             <Input
-              className="[&>div>div>div>input]:!rounded-b-none [&>div>div>div>input]:!pl-9"
+              className="[&>div>div>div>input]:rounded-b-none! [&>div>div>div>input]:pl-9!"
               icon={<Search size={16} />}
               placeholder={searchPlaceholder}
               value={searchString}
@@ -205,7 +205,7 @@ export default function MultiSelect({
                         'space-x-1 rounded bg-transparent p-2 px-4 text-sm hover:bg-overlay-hover',
                         `${
                           active
-                            ? ' [[data-theme*=dark]_&]:bg-green-600 [[data-theme*=dark]_&]:bg-opacity-25'
+                            ? ' in-data-[theme*=dark]:bg-green-600 [[data-theme*=dark]_&]:bg-opacity-25'
                             : ''
                         }`,
                       ].join(' ')}
