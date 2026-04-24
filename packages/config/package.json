@@ -10,8 +10,8 @@
   "dependencies": {
     "@mertasan/tailwindcss-variables": "^2.2.3",
     "@radix-ui/colors": "^0.1.8",
-    "@tailwindcss/forms": "^0.5.0",
-    "@tailwindcss/typography": "^0.5.9",
+    "@tailwindcss/forms": "^0.5.11",
+    "@tailwindcss/typography": "^0.5.19",
     "deepmerge": "^4.2.2",
     "mini-svg-data-uri": "^1.4.3",
     "tailwindcss-radix": "^2.0.0"
