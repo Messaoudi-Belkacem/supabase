@@ -1,6 +1,6 @@
 @import 'tailwindcss';
+@import './../../../packages/config/tailwind.config.css';
 @import './../styles/tailwind.config.css';
-@import './../../../packages/config/tailwind-utilities/hit-area.css';
 @config '../../../packages/config/tailwind.config.js';
 
 /* :root {
