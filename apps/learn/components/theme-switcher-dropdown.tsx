@@ -50,7 +50,7 @@ const ThemeSwitcherDropdown = () => {
     )
   }
 
-  const iconClasses = 'text-foreground-light group-data-[state=open]:text-foreground'
+  const iconClasses = 'text-foreground-light group-data-open:text-foreground'
 
   return (
     <>
