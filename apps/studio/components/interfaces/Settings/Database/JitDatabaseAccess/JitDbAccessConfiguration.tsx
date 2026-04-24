@@ -314,7 +314,7 @@ export const JitDbAccessConfiguration = () => {
                   label="Enable JIT access"
                   description="Allow configured project members to request temporary database access."
                 >
-                  <div className="flex w-fit flex-shrink-0 items-center justify-end gap-2">
+                  <div className="flex w-fit shrink-0 items-center justify-end gap-2">
                     {(isLoadingConfiguration || isUpdatingJitDbAccess) && (
                       <Loader2
                         className="animate-spin text-foreground-muted/50"

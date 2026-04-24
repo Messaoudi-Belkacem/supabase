@@ -10,7 +10,7 @@ import {
 } from '@/components/interfaces/Settings/Logs/Logs.utils'
 
 const inputStyle = cn(
-  'w-6 p-0 text-center text-xs text-foreground outline-none cursor-text',
+  'w-6 p-0 text-center text-xs text-foreground outline-hidden cursor-text',
   'ring-0 focus:ring-0 ring-none border-none bg-transparent'
 )
 

@@ -72,7 +72,7 @@ const QuoteCard: FC<Quote> = ({ quote, author, avatar, authorTitle }) => {
           alt={author}
           width={32}
           height={32}
-          className="bg-surface-200 rounded-full border flex-shrink-0"
+          className="bg-surface-200 rounded-full border shrink-0"
         />
         <div className="flex flex-col gap-0">
           <span className="text-base text-foreground-light leading-snug">{author}</span>

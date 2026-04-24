@@ -419,7 +419,7 @@ export const TriggerSheet = ({
                                 type="button"
                                 className={cn(
                                   'relative w-full rounded border border-default',
-                                  'bg-surface-200 px-5 py-1 shadow-sm transition-all',
+                                  'bg-surface-200 px-5 py-1 shadow-xs transition-all',
                                   'hover:border-strong hover:bg-overlay-hover'
                                 )}
                                 onClick={() => setShowFunctionSelector(true)}
@@ -434,7 +434,7 @@ export const TriggerSheet = ({
                                 className={cn(
                                   'relative w-full flex items-center justify-between',
                                   'space-x-3 px-5 py-4 border border-default',
-                                  'rounded shadow-sm transition-shadow'
+                                  'rounded shadow-xs transition-shadow'
                                 )}
                               >
                                 <div className="flex items-center gap-2">

@@ -141,7 +141,7 @@ export default function DataGridDemo() {
   return (
     <div className="h-full w-full flex flex-col relative min-h-[400px] rounded-md border overflow-hidden">
       <DataGrid
-        className="flex-grow border-t-0 bg-dash-canvas"
+        className="grow border-t-0 bg-dash-canvas"
         rowHeight={44}
         headerRowHeight={36}
         columns={columns}
@@ -153,7 +153,7 @@ export default function DataGridDemo() {
           return cn(
             'bg-surface-75',
             isSelected && 'bg-surface-200',
-            '[&>.rdg-cell]:border-box [&>.rdg-cell]:outline-none [&>.rdg-cell]:shadow-none',
+            '[&>.rdg-cell]:border-box [&>.rdg-cell]:outline-hidden [&>.rdg-cell]:shadow-none',
             '[&>.rdg-cell]:border-secondary [&>.rdg-cell:not(:last-child)]:border-r',
             !isLastRow && '[&>.rdg-cell]:border-b',
             '[&>.rdg-cell:nth-child(2)>div]:ml-8'

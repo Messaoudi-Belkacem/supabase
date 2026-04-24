@@ -56,11 +56,11 @@ const DaySection = ({ day, className }: { day: WeekDayProps; className?: string 
               bg-surface-75
               min-h-[210px] group sm:aspect-[3.67/1] relative overflow-hidden flex-1 flex flex-col justify-between
               hover:border-strong transition-colors border border-muted
-              rounded-xl text-2xl bg-contain shadow-sm`,
+              rounded-xl text-2xl bg-contain shadow-xs`,
               cssGroup
             )}
           >
-            <div className="relative text-foreground-light p-4 sm:px-6 md:py-6 md:px-8 z-20 flex-grow flex flex-col items-start justify-between gap-2 w-full lg:w-1/2 text-left">
+            <div className="relative text-foreground-light p-4 sm:px-6 md:py-6 md:px-8 z-20 grow flex flex-col items-start justify-between gap-2 w-full lg:w-1/2 text-left">
               <div className="relative w-full flex items-center gap-2 text-sm translate-x-0 !ease-[cubic-bezier(.24,0,.22,.99)] duration-200 group-hover:-translate-x-6 transition-transform">
                 <Edit className="w-4 min-w-4 group-hover:opacity-0 transition-opacity" />
                 <span>Blog post</span>

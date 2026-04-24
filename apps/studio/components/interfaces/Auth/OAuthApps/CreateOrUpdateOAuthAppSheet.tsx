@@ -251,7 +251,7 @@ export const CreateOrUpdateOAuthAppSheet = ({
               <SheetClose
                 className={cn(
                   'text-muted hover:text ring-offset-background transition-opacity hover:opacity-100',
-                  'focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2',
+                  'focus:outline-hidden focus:ring-2 focus:ring-ring focus:ring-offset-2',
                   'disabled:pointer-events-none data-[state=open]:bg-secondary',
                   'transition'
                 )}
@@ -264,11 +264,11 @@ export const CreateOrUpdateOAuthAppSheet = ({
               </SheetTitle>
             </div>
           </SheetHeader>
-          <SheetSection className="overflow-auto flex-grow px-0">
+          <SheetSection className="overflow-auto grow px-0">
             <Form_Shadcn_ {...form}>
               <form className="space-y-6" onSubmit={form.handleSubmit(onSubmit)} id={FORM_ID}>
                 <div className="px-5 flex items-start justify-between gap-4">
-                  <div className="flex-grow space-y-4">
+                  <div className="grow space-y-4">
                     <FormField_Shadcn_
                       control={form.control}
                       name="name"

@@ -87,7 +87,7 @@ const DocsAiPage = () => {
           />
         )}
       </CommandHeader>
-      <div className={cn('flex-grow min-h-0 overflow-auto')}>
+      <div className={cn('grow min-h-0 overflow-auto')}>
         {!hasError && messages.length > 0 && <AiMessages messages={messages} />}
         {!hasError && messages.length === 0 && <EmptyState handleSubmit={handleSubmit} />}
         {hasError && <ErrorState handleReset={handleReset} />}
@@ -157,7 +157,7 @@ function PromptInput({
     <CommandInput
       className={cn(
         'w-full h-11',
-        'border-none outline-none bg-transparent rounded-none rounded-t-md px-4 py-7',
+        'border-none outline-hidden bg-transparent rounded-none rounded-t-md px-4 py-7',
         'flex',
         'text-base text-foreground-light',
         'focus:ring-0 focus:shadow-none focus:ring-transparent',
@@ -198,7 +198,7 @@ function AiMessages({ messages }: { messages: Array<Message> }) {
       <CommandList_Shadcn_ />
       <div
         className={cn(
-          'flex-grow min-h-0 overflow-auto p-4',
+          'grow min-h-0 overflow-auto p-4',
           'grid gap-6 md:grid-cols-[max-content,1fr] grid-rows-[max-content]'
         )}
       >
@@ -211,7 +211,7 @@ function AiMessages({ messages }: { messages: Array<Message> }) {
                     <div
                       className={cn(
                         'w-7 h-7',
-                        'border border-muted bg-background shadow-sm rounded-full',
+                        'border border-muted bg-background shadow-xs rounded-full',
                         'flex items-center justify-center',
                         'text-foreground-lighter'
                       )}

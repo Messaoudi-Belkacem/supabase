@@ -219,7 +219,7 @@ const MapView = ({
                     <div className="flex items-center gap-x-2">
                       <img
                         alt="region icon"
-                        className="w-4 rounded-sm"
+                        className="w-4 rounded-xs"
                         src={`${BASE_PATH}/img/regions/${tooltip.region.region}.svg`}
                       />
                       <p className="text-[10px]">{tooltip.region.country}</p>
@@ -240,7 +240,7 @@ const MapView = ({
       </ComposableMap>
 
       {showRegionDetails && selectedRegion && (
-        <div className="absolute bottom-4 right-4 flex flex-col bg-studio/50 backdrop-blur-sm border rounded w-[400px]">
+        <div className="absolute bottom-4 right-4 flex flex-col bg-studio/50 backdrop-blur-xs border rounded w-[400px]">
           <div className="flex items-center justify-between py-4 px-4 border-b">
             <div>
               <p className="text-xs text-foreground-light">
@@ -251,7 +251,7 @@ const MapView = ({
             </div>
             <img
               alt="region icon"
-              className="w-10 rounded-sm"
+              className="w-10 rounded-xs"
               src={`${BASE_PATH}/img/regions/${selectedRegion.region}.svg`}
             />
           </div>

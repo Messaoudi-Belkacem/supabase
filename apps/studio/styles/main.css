@@ -101,7 +101,7 @@ input.form-control,
   @apply box-border;
   /* @apply  w-full ; */
   @apply rounded-md;
-  @apply shadow-sm;
+  @apply shadow-xs;
   @apply transition-all;
   @apply text-foreground;
   @apply border;
@@ -113,7 +113,7 @@ input.form-control,
   @apply bg-studio;
   @apply border-strong border;
 
-  @apply outline-none;
+  @apply outline-hidden;
   @apply focus:ring-2 focus:ring-current;
 }
 

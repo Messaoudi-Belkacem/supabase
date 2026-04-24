@@ -122,14 +122,14 @@ const LinterDataGrid = ({
   return (
     <ResizablePanelGroup
       orientation="horizontal"
-      className="relative flex flex-grow bg-alternative min-h-0"
+      className="relative flex grow bg-alternative min-h-0"
       autoSaveId="linter-layout-v1"
     >
       <ResizablePanel>
         <DataGrid
           ref={gridRef}
           style={{ height: '100%' }}
-          className={cn('flex-1 flex-grow h-full')}
+          className={cn('flex-1 grow h-full')}
           rowHeight={44}
           headerRowHeight={36}
           columns={columns}
@@ -139,7 +139,7 @@ const LinterDataGrid = ({
             return [
               `${isSelected ? 'bg-surface-300 dark:bg-surface-300' : 'bg-200'} cursor-pointer`,
               `${isSelected ? '[&>div:first-child]:border-l-4 border-l-secondary [&>div]:border-l-foreground' : ''}`,
-              '[&>.rdg-cell]:border-box [&>.rdg-cell]:outline-none [&>.rdg-cell]:shadow-none',
+              '[&>.rdg-cell]:border-box [&>.rdg-cell]:outline-hidden [&>.rdg-cell]:shadow-none',
               '[&>.rdg-cell:first-child>div]:ml-4',
             ].join(' ')
           }}
@@ -195,7 +195,7 @@ const LinterDataGrid = ({
               </div>
               <Button type="text" icon={<X />} onClick={handleSidepanelClose} />
             </div>
-            <div className="p-6 flex-grow min-h-0 overflow-y-auto">
+            <div className="p-6 grow min-h-0 overflow-y-auto">
               <LintDetail lint={selectedLint} projectRef={ref!} />
             </div>
           </ResizablePanel>

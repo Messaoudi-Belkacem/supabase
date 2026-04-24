@@ -43,7 +43,7 @@ const NavigationIconLink = forwardRef<HTMLAnchorElement, NavigationIconButtonPro
       'group-data-[state=expanded]:-space-x-2',
       'hover:bg-surface-200',
       'group/item',
-      `${isActive && '!bg-selection shadow-sm'}`,
+      `${isActive && '!bg-selection shadow-xs'}`,
     ]
 
     const LinkComponent = forwardRef<HTMLAnchorElement, ComponentPropsWithoutRef<typeof Link>>(

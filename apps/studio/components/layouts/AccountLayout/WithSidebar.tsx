@@ -48,7 +48,7 @@ export const WithSidebar = ({
         />
       )}
       <div className="flex flex-1 flex-col">
-        <div className="flex-1 flex-grow overflow-y-auto">{children}</div>
+        <div className="flex-1 grow overflow-y-auto">{children}</div>
       </div>
     </div>
   )
@@ -76,7 +76,7 @@ export const SidebarContent = ({
       >
         <div className="flex-1 flex flex-col">
           {backToDashboardURL && (
-            <div className="flex-shrink-0 hidden md:block">
+            <div className="shrink-0 hidden md:block">
               <div className="flex h-12 max-h-12 items-center border-b px-6 border-default">
                 <Link
                   href={backToDashboardURL}

@@ -86,7 +86,7 @@ export const IntegrationInstallation = forwardRef<HTMLLIElement, IntegrationInst
       <li
         ref={ref}
         key={integration.id}
-        className="bg-surface-100 border shadow-sm flex justify-between items-center px-8 py-4 rounded-lg"
+        className="bg-surface-100 border shadow-xs flex justify-between items-center px-8 py-4 rounded-lg"
         {...props}
       >
         <div className="flex gap-6 items-center">
@@ -166,13 +166,13 @@ export const IntegrationConnection = forwardRef<HTMLLIElement, IntegrationConnec
             orientation === 'horizontal'
               ? 'flex items-center justify-between gap-2'
               : 'flex flex-col gap-3',
-            'bg-surface-100 border shadow-sm px-6 py-4 rounded-lg',
+            'bg-surface-100 border shadow-xs px-6 py-4 rounded-lg',
             className
           )}
         >
           <div className="flex flex-col gap-1 min-w-0">
             <div className="flex items-center gap-2">
-              <div className="flex-shrink-0 flex gap-x-2 items-center max-w-40 ">
+              <div className="shrink-0 flex gap-x-2 items-center max-w-40 ">
                 <HandleIcon type={'Supabase'} />
                 <span title={project?.name} className="text-sm truncate">
                   {project?.name}
@@ -181,7 +181,7 @@ export const IntegrationConnection = forwardRef<HTMLLIElement, IntegrationConnec
 
               <ArrowRight
                 size={14}
-                className="flex-shrink-0 text-foreground-lighter"
+                className="shrink-0 text-foreground-lighter"
                 strokeWidth={1.5}
               />
 
@@ -226,7 +226,7 @@ export const IntegrationConnection = forwardRef<HTMLLIElement, IntegrationConnec
             </div>
           </div>
 
-          <div className="flex-shrink-0">{actions}</div>
+          <div className="shrink-0">{actions}</div>
         </div>
       </li>
     )
@@ -243,7 +243,7 @@ export const IntegrationConnectionOption = forwardRef<HTMLLIElement, Integration
         key={connection.id}
         {...props}
         className={cn(
-          'bg-surface-100 border shadow-sm flex justify-between items-center px-8 py-4 rounded-lg'
+          'bg-surface-100 border shadow-xs flex justify-between items-center px-8 py-4 rounded-lg'
         )}
       >
         <div className="flex flex-col gap-1">

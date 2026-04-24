@@ -41,7 +41,7 @@ export default function LaunchWeekPrizeSection({ className }: { className?: stri
                   />
                 </div>
                 <div className="flex flex-col lg:w-1/2 gap-1 p-4 md:p-8 lg:pl-0 lg:h-full">
-                  <div className="flex flex-col gap-2 flex-grow">
+                  <div className="flex flex-col gap-2 grow">
                     <LabelBadge text="5 sets" />
                     <p className="xl:mt-4 text-foreground">Win AirPods Max</p>
                     <p className="text-foreground-lighter text-sm">
@@ -57,7 +57,7 @@ export default function LaunchWeekPrizeSection({ className }: { className?: stri
           />
           <div className="w-full flex flex-col gap-4 items-stretch">
             <LaunchWeekPrizeCard
-              className="flex-grow"
+              className="grow"
               content={
                 <div className="p-4 md:p-6 flex flex-col gap-2 text-sm items-start justify-between h-full">
                   <LabelBadge text="30 t-shirts" />
@@ -66,7 +66,7 @@ export default function LaunchWeekPrizeSection({ className }: { className?: stri
               }
             />
             <LaunchWeekPrizeCard
-              className="flex-grow"
+              className="grow"
               content={
                 <div className="p-4 md:p-6 flex flex-col gap-2 text-sm items-start justify-between h-full">
                   <LabelBadge text="25 pins" />

@@ -50,7 +50,7 @@ export default function LaunchWeekPrizeCard({
       <div className="relative h-full flex flex-col bg-[#1C1C1C] rounded-lg overflow-hidden">
         <div
           className={[
-            "relative w-full flex-grow before:content[' '] before:absolute before:inset-0 before:z-10 before:bg-gradient-to-t before:from-[#1C1C1C]",
+            "relative w-full grow before:content[' '] before:absolute before:inset-0 before:z-10 before:bg-gradient-to-t before:from-[#1C1C1C]",
             imageWrapperClassName && imageWrapperClassName,
           ].join(' ')}
         >

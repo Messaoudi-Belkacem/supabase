@@ -265,7 +265,7 @@ const MobileMenuBackdrop = memo(function MobileMenuBackdrop() {
         'left-0',
         'right-0',
         'z-10',
-        'backdrop-blur-sm backdrop-filter bg-alternative/90',
+        'backdrop-blur-xs backdrop-filter bg-alternative/90',
         mobileMenuOpen ? 'absolute h-full w-full top-0 left-0' : 'hidden h-0',
         // always hide on desktop
         'lg:hidden'
@@ -325,7 +325,7 @@ const NavContainer = memo(function NavContainer({ children }: PropsWithChildren)
           'h-fit lg:h-screen overflow-y-scroll lg:overflow-auto',
           '[overscroll-behavior:contain]',
           'backdrop-blur backdrop-filter bg-background',
-          'flex flex-col flex-grow'
+          'flex flex-col grow'
         )}
       >
         <span id="main-nav-title" className="sr-only">

@@ -291,7 +291,7 @@ const MultiSelectorTrigger = React.forwardRef<HTMLButtonElement, MultiSelectorTr
           'flex w-full min-w-[200px] min-h-[40px] items-center justify-between rounded-md border',
           'border-alternative bg-foreground/[.026] px-3 py-2 text-sm',
           'ring-offset-background placeholder:text-muted-foreground',
-          'focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2',
+          'focus:outline-hidden focus:ring-2 focus:ring-ring focus:ring-offset-2',
           'disabled:cursor-not-allowed disabled:opacity-50',
           'hover:border-primary transition-colors duration-200',
           className
@@ -439,7 +439,7 @@ const MultiSelectorInput = React.forwardRef<
       wrapperClassName={wrapperClassName}
       className={cn(
         MultiSelectorInputVariants({ size }),
-        'text-sm bg-transparent h-full flex-grow border-none outline-none placeholder:text-foreground-muted flex-1',
+        'text-sm bg-transparent h-full grow border-none outline-hidden placeholder:text-foreground-muted flex-1',
         activeIndex !== -1 && 'caret-transparent',
         className
       )}
@@ -564,14 +564,14 @@ const MultiSelectorItem = React.forwardRef<
           'peer h-4 w-4 shrink-0 rounded border border-control bg-control/25 ring-offset-background',
           'transition-colors duration-150 ease-in-out',
           'hover:border-strong',
-          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
+          'focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
           'disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-foreground data-[state=checked]:text-background',
           isSelected ? 'bg-foreground text-background' : '[&_svg]:invisible'
         )}
       >
         <Check className="h-3 w-3" strokeWidth={4} />
       </div>
-      <div className="text-xs flex-grow leading-none pointer-events-none cursor-pointer peer-disabled:cursor-not-allowed peer-disabled:pointer-events-none peer-disabled:opacity-50">
+      <div className="text-xs grow leading-none pointer-events-none cursor-pointer peer-disabled:cursor-not-allowed peer-disabled:pointer-events-none peer-disabled:opacity-50">
         {children}
       </div>
     </CommandItem>

@@ -293,7 +293,7 @@ const CreateProject = () => {
                   addOnBefore={() => (
                     <img
                       alt="region icon"
-                      className="w-5 rounded-sm"
+                      className="w-5 rounded-xs"
                       src={`${BASE_PATH}/img/regions/${Object.values(AWS_REGIONS)[i].code}.svg`}
                     />
                   )}

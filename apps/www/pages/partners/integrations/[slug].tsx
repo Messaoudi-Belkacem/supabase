@@ -79,7 +79,7 @@ function Partner({
           visible
           onCancel={() => setFocusedImage(null)}
           size="xxlarge"
-          className="w-full outline-none"
+          className="w-full outline-hidden"
         >
           <Image
             layout="responsive"
@@ -108,7 +108,7 @@ function Partner({
                 layout="fixed"
                 width={56}
                 height={56}
-                className="bg-surface-200 flex-shrink-f0 h-14 w-14 rounded-full"
+                className="bg-surface-200 shrink-f0 h-14 w-14 rounded-full"
                 src={partner.logo}
                 alt={partner.title}
               />
@@ -195,7 +195,7 @@ function Partner({
               {!isNarrow && <PartnerDetails partner={partner} />}
             </div>
             {partner.call_to_action_link && (
-              <div className="bg-background hover:border-default-control border-default rounded-2xl border p-10 drop-shadow-sm max-w-5xl mx-auto mt-12">
+              <div className="bg-background hover:border-default-control border-default rounded-2xl border p-10 drop-shadow-xs max-w-5xl mx-auto mt-12">
                 <div className="flex flex-row justify-between">
                   <h1 className="text-2xl font-medium self-center">
                     Get started with {partner.title} and Supabase.

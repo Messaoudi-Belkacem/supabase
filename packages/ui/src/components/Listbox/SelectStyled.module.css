@@ -5,7 +5,7 @@
 /* .sbui-listbox {
   @apply block w-full bg-white pl-3 pr-10 py-2 text-sm rounded-md transition-all;
   @apply text-gray-700 border border-solid border-gray-300;
-  @apply cursor-default focus:outline-none focus:ring-1 focus:ring-brand-600 focus:border-brand-600;
+  @apply cursor-default focus:outline-hidden focus:ring-1 focus:ring-brand-600 focus:border-brand-600;
   @apply dark:bg-transparent dark:text-white dark:border-gray-500;
   @apply dark:focus:border-brand-300;
   -webkit-appearance: none;
@@ -97,7 +97,7 @@
 */
 
 /* .sbui-listbox-option-container {
-  @apply list-none p-0 absolute mt-1 w-full bg-white dark:bg-gray-800 shadow-lg border border-solid border-control max-h-60 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm z-10;
+  @apply list-none p-0 absolute mt-1 w-full bg-white dark:bg-gray-800 shadow-lg border border-solid border-control max-h-60 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-hidden sm:text-sm z-10;
 } */
 
 /* .sbui-listbox-option {

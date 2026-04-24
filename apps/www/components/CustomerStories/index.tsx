@@ -124,7 +124,7 @@ export const CompositionCol: React.FC<CompositionColProps> = ({ column, classNam
           <Link
             href={customer.url!}
             key={customer.organization}
-            className="col-span-12 md:col-span-4 w-full h-full flex-grow"
+            className="col-span-12 md:col-span-4 w-full h-full grow"
             onClick={() =>
               sendTelemetryEvent({
                 action: 'homepage_customer_story_card_clicked',
@@ -178,7 +178,7 @@ const CustomerCard: React.FC<CustomerCardProps> = ({
       return (
         <Panel
           hasActiveOnHover
-          outerClassName={cn('h-full w-full md:w-[250px] h-full flex-grow', className)}
+          outerClassName={cn('h-full w-full md:w-[250px] h-full grow', className)}
           innerClassName="flex items-center justify-center"
         >
           <Image
@@ -215,7 +215,7 @@ const CustomerCard: React.FC<CustomerCardProps> = ({
           {showLogo && <LogoComponent logoImage={customer.logo!} />}
 
           <p className="text-base text-foreground-lighter">{customer.title}</p>
-          {children && <span className="text-sm text-foreground-light flex-grow">{children}</span>}
+          {children && <span className="text-sm text-foreground-light grow">{children}</span>}
         </Panel>
       )
   }

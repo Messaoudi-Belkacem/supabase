@@ -125,7 +125,7 @@ export const PrimaryNode = ({ data }: NodeProps<Node<PrimaryNodeData>>) => {
           </div>
           <img
             alt="region icon"
-            className="w-8 rounded-sm mt-0.5"
+            className="w-8 rounded-xs mt-0.5"
             src={`${BASE_PATH}/img/regions/${region.region}.svg`}
           />
         </div>
@@ -357,7 +357,7 @@ export const RegionNode = ({ data }: any) => {
       <div className="absolute bottom-2 flex items-center justify-between gap-x-2">
         <img
           alt="region icon"
-          className="w-5 rounded-sm"
+          className="w-5 rounded-xs"
           src={`${BASE_PATH}/img/regions/${region.region}.svg`}
         />
         <p className="text-sm">{region.name}</p>

@@ -99,14 +99,14 @@ const NavigationItem: React.FC<NavigationItemProps> = ({
             <span className="flex items-center gap-2 flex-1 min-w-0">
               {item.title}
               {item.new && (
-                <Badge variant="default" className="capitalize flex-shrink-0">
+                <Badge variant="default" className="capitalize shrink-0">
                   NEW
                 </Badge>
               )}
             </span>
             <ChevronRight
               className={cn(
-                'w-4 h-4 transition-transform flex-shrink-0',
+                'w-4 h-4 transition-transform shrink-0',
                 isOpen && 'rotate-90',
                 (hasChildren && isOpen) || isActive ? 'text-foreground' : 'text-foreground-lighter'
               )}
@@ -132,7 +132,7 @@ const NavigationItem: React.FC<NavigationItemProps> = ({
             <span className="flex items-center gap-2">
               <span className="truncate">{item.title}</span>
               {item.new && (
-                <Badge variant="default" className="capitalize flex-shrink-0">
+                <Badge variant="default" className="capitalize shrink-0">
                   NEW
                 </Badge>
               )}
@@ -151,7 +151,7 @@ const NavigationItem: React.FC<NavigationItemProps> = ({
               )}
             >
               <span className="flex items-center gap-2">
-                <Lock className="w-3 h-3 text-foreground-muted flex-shrink-0" />
+                <Lock className="w-3 h-3 text-foreground-muted shrink-0" />
                 <span className="truncate">{item.title} (Internal)</span>
               </span>
             </Link>

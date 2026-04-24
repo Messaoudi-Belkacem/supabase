@@ -22,7 +22,7 @@ const actionButtonVariants = cva(
 )
 
 const iconVariants = cva(
-  'w-5 h-5 px-2 rounded-sm outline outline-1 outline-offset-[-1px] inline-flex flex-col justify-center items-center gap-2',
+  'w-5 h-5 px-2 rounded-xs outline outline-1 outline-offset-[-1px] inline-flex flex-col justify-center items-center gap-2',
   {
     variants: {
       variant: {

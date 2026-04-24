@@ -314,7 +314,7 @@ function ChangelogPage({ changelog, pageInfo, restPage }: ChangelogPageProps) {
                 "
                       >
                         <div className="flex w-full items-baseline gap-6">
-                          <div className="bg-border border-muted text-foreground-lighter -ml-2.5 flex h-5 w-5 items-center justify-center rounded border drop-shadow-sm">
+                          <div className="bg-border border-muted text-foreground-lighter -ml-2.5 flex h-5 w-5 items-center justify-center rounded border drop-shadow-xs">
                             <GitCommit size={14} strokeWidth={1.5} />
                           </div>
                           <div className="flex w-full flex-col gap-1">

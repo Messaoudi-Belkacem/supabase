@@ -115,11 +115,11 @@ export const CreateQueueSheet = ({ visible, onClose }: CreateQueueSheetProps) =>
             <SheetTitle>Create a new queue</SheetTitle>
           </SheetHeader>
 
-          <div className="overflow-auto flex-grow">
+          <div className="overflow-auto grow">
             <Form_Shadcn_ {...form}>
               <form
                 id={FORM_ID}
-                className="flex-grow overflow-auto"
+                className="grow overflow-auto"
                 onSubmit={form.handleSubmit(onSubmit)}
               >
                 <QueueNameField form={form} />

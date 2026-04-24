@@ -25,7 +25,7 @@ const MessageSelection = ({ log, onClose }: MessageSelectionProps) => {
 
   return (
     <div
-      className={cn('relative flex h-full flex-grow flex-col border-l overflow-y-scroll bg-200')}
+      className={cn('relative flex h-full grow flex-col border-l overflow-y-scroll bg-200')}
     >
       <div
         className={cn(
@@ -66,7 +66,7 @@ const MessageSelection = ({ log, onClose }: MessageSelectionProps) => {
           </div>
         </div>
       </div>
-      <div className="relative h-px flex-grow">
+      <div className="relative h-px grow">
         <div className="pt-4 flex flex-col gap-4">
           <div className="px-4 flex flex-row justify-between items-center">
             <div className="transition">

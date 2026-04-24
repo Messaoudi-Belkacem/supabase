@@ -76,7 +76,7 @@ export function ExpandableVideo({
         fill
         sizes="100%"
         priority={priority}
-        className="absolute inset-0 object-cover blur-sm scale-105"
+        className="absolute inset-0 object-cover blur-xs scale-105"
       />
     </div>
   )

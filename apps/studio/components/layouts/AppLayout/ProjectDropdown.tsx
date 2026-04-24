@@ -97,10 +97,10 @@ function ProjectDropdownPlatformView({
   selectorProps,
 }: ProjectDropdownPlatformViewProps) {
   return (
-    <div className="flex items-center flex-shrink-0">
+    <div className="flex items-center shrink-0">
       <Link
         href={`/project/${projectRef}`}
-        className="flex items-center gap-2 flex-shrink-0 text-sm"
+        className="flex items-center gap-2 shrink-0 text-sm"
       >
         <Box size={14} strokeWidth={1.5} className="text-foreground-lighter" />
         <span title={projectName} className="text-foreground max-w-32 lg:max-w-64 truncate">
@@ -111,7 +111,7 @@ function ProjectDropdownPlatformView({
 
       <OrganizationProjectSelector
         {...selectorProps}
-        renderTrigger={() => <AppLayoutDropdownTriggerButton className="flex-shrink-0" />}
+        renderTrigger={() => <AppLayoutDropdownTriggerButton className="shrink-0" />}
       />
     </div>
   )

@@ -39,7 +39,7 @@
   @apply border border-solid rounded;
 
   @apply text-brand-400 border-gray-300 transition-all;
-  @apply hover:border-brand-300 focus:ring-brand-300 focus:outline-none;
+  @apply hover:border-brand-300 focus:ring-brand-300 focus:outline-hidden;
 
   @apply dark:bg-transparent dark:border-dark-400 dark:text-white;
   @apply dark:hover:border-brand-300;

@@ -452,7 +452,7 @@ export const SchemaGraph = () => {
                     zoomable
                     nodeColor={miniMapNodeColor}
                     maskColor={miniMapMaskColor}
-                    className="border rounded-md shadow-sm"
+                    className="border rounded-md shadow-xs"
                   />
                   <SchemaGraphLegend />
                 </ReactFlow>

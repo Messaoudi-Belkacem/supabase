@@ -119,7 +119,7 @@ const Nav = ({ hideNavbar, stickyNavbar = true }: Props) => {
         />
         <nav
           className={cn(
-            `relative z-40 border-default border-b backdrop-blur-sm transition-all duration-300`,
+            `relative z-40 border-default border-b backdrop-blur-xs transition-all duration-300`,
             showLaunchWeekNavMode && 'border-muted border-b bg-transparent',
             isTransparent && 'border-transparent backdrop-blur-none'
           )}
@@ -127,7 +127,7 @@ const Nav = ({ hideNavbar, stickyNavbar = true }: Props) => {
           <div className="relative flex justify-between h-16 mx-auto lg:container lg:px-16 xl:px-20">
             <div className="flex items-center px-6 lg:px-0 flex-1 sm:items-stretch justify-between">
               <div className="flex items-center">
-                <div className="flex items-center flex-shrink-0">
+                <div className="flex items-center shrink-0">
                   <RightClickBrandLogo />
                 </div>
                 <NavigationMenu

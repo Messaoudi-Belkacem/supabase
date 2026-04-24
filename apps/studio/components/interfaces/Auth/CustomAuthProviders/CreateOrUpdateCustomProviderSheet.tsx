@@ -262,7 +262,7 @@ export const CreateOrUpdateCustomProviderSheet = ({
             <SheetClose
               className={cn(
                 'text-muted hover:text ring-offset-background transition-opacity hover:opacity-100',
-                'focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2',
+                'focus:outline-hidden focus:ring-2 focus:ring-ring focus:ring-offset-2',
                 'disabled:pointer-events-none data-[state=open]:bg-secondary',
                 'transition'
               )}
@@ -277,11 +277,11 @@ export const CreateOrUpdateCustomProviderSheet = ({
         </SheetHeader>
         <Form_Shadcn_ {...form}>
           <form
-            className="flex-grow overflow-auto"
+            className="grow overflow-auto"
             onSubmit={form.handleSubmit(onSubmit)}
             id={FORM_ID}
           >
-            <SheetSection className="flex-grow px-5 space-y-4">
+            <SheetSection className="grow px-5 space-y-4">
               <FormField_Shadcn_
                 control={form.control}
                 name="identifier"
@@ -348,7 +348,7 @@ export const CreateOrUpdateCustomProviderSheet = ({
               />
             </SheetSection>
             <Separator />
-            <SheetSection className="flex-grow px-5 space-y-4">
+            <SheetSection className="grow px-5 space-y-4">
               <FormSectionLabel>OAuth Endpoints</FormSectionLabel>
               <FormField_Shadcn_
                 control={form.control}
@@ -367,7 +367,7 @@ export const CreateOrUpdateCustomProviderSheet = ({
               />
             </SheetSection>
             {isManualConfiguration ? (
-              <SheetSection className="flex-grow px-5 pt-0 space-y-4" key="manual-config">
+              <SheetSection className="grow px-5 pt-0 space-y-4" key="manual-config">
                 <FormField_Shadcn_
                   control={form.control}
                   name="authorization_url"
@@ -430,7 +430,7 @@ export const CreateOrUpdateCustomProviderSheet = ({
                 />
               </SheetSection>
             ) : (
-              <SheetSection className="flex-grow px-5 pt-0 space-y-4" key="discovery-config">
+              <SheetSection className="grow px-5 pt-0 space-y-4" key="discovery-config">
                 <FormField_Shadcn_
                   control={form.control}
                   name="discovery_url"
@@ -456,7 +456,7 @@ export const CreateOrUpdateCustomProviderSheet = ({
               </SheetSection>
             )}
             <Separator />
-            <SheetSection className="flex-grow px-5 space-y-4">
+            <SheetSection className="grow px-5 space-y-4">
               <FormField_Shadcn_
                 control={form.control}
                 name="client_id"
@@ -481,7 +481,7 @@ export const CreateOrUpdateCustomProviderSheet = ({
               />
             </SheetSection>
             <Separator />
-            <SheetSection className="flex-grow px-5 space-y-4">
+            <SheetSection className="grow px-5 space-y-4">
               <FormField_Shadcn_
                 control={form.control}
                 name="scopes"
@@ -514,7 +514,7 @@ export const CreateOrUpdateCustomProviderSheet = ({
               />
             </SheetSection>
             <Separator />
-            <SheetSection className="flex-grow px-5 space-y-4">
+            <SheetSection className="grow px-5 space-y-4">
               <FormItemLayout
                 layout="horizontal"
                 label="Callback URL"

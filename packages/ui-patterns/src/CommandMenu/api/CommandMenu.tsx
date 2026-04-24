@@ -160,7 +160,7 @@ function CommandMenuTrigger({ children }: PropsWithChildren) {
       'rounded-md border border-input bg-background',
       'text-sm',
       'hover:bg-accent hover:text-accent-foreground',
-      'ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
+      'ring-offset-background focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
       'disabled:pointer-events-none disabled:opacity-50',
       'transition-colors',
       childFromProps.props.className
@@ -184,12 +184,12 @@ function CommandMenuTriggerInput({
         type="button"
         className={cn(
           'group',
-          'flex-grow md:min-w-44 xl:min-w-56 h-[30px] rounded-md',
+          'grow md:min-w-44 xl:min-w-56 h-[30px] rounded-md',
           'pl-1.5 md:pl-2 pr-1',
           'flex items-center justify-between',
           'bg-surface-100/75 text-foreground-lighter border',
           'hover:bg-opacity-100 hover:border-stronger',
-          'focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-border-strong focus-visible:ring-offset-1 focus-visible:ring-offset-background',
+          'focus-visible:outline-hidden focus-visible:ring-4 focus-visible:ring-border-strong focus-visible:ring-offset-1 focus-visible:ring-offset-background',
           'transition',
           className
         )}

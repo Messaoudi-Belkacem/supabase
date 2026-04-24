@@ -411,7 +411,7 @@ export default function LW8Releases() {
                 <div
                   className={`
                       min-h-[400px] relative overflow-hidden group/d1 flex-1 flex flex-col items-center lg:items-start justify-between
-                      basis-1/2 lg:flex-shrink xl:basis-2/3 border border-[#111718] rounded-xl lg:h-full bg-no-repeat py-10 lg:py-12 px-8 lg:px-10 text-2xl bg-contain shadow-lg
+                      basis-1/2 lg:shrink xl:basis-2/3 border border-[#111718] rounded-xl lg:h-full bg-no-repeat py-10 lg:py-12 px-8 lg:px-10 text-2xl bg-contain shadow-lg
                       `}
                 >
                   <div

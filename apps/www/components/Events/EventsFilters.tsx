@@ -187,7 +187,7 @@ function EventFilters({ allEvents, setEvents, categories, onDemandEvents }: Prop
             </DropdownMenu>
           </motion.div>
         )}
-        <div className="hidden lg:flex flex-wrap items-center flex-grow gap-2">
+        <div className="hidden lg:flex flex-wrap items-center grow gap-2">
           {Object.entries(categories).map(([category, count]) => (
             <Button
               key={category}

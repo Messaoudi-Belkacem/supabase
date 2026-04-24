@@ -184,7 +184,7 @@ function BlogFilters({ onFilterChange, view, setView }: Props) {
           </DropdownMenu>
         </div>
       )}
-      <div className="hidden lg:flex flex-wrap items-center flex-grow gap-2">
+      <div className="hidden lg:flex flex-wrap items-center grow gap-2">
         {allCategories.map((category: string) => (
           <Button
             key={category}

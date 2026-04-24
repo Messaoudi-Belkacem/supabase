@@ -327,7 +327,7 @@ const CareerPage = ({ jobs, placeholderJob, contributors }: CareersPageProps) =>
                       className={`${
                         Styles[`contributors-${i}`]
                       } absolute w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 rounded-full border-[1.5px] border-default z-10
-                          transition-all hover:scale-105 drop-shadow-sm hover:drop-shadow-md
+                          transition-all hover:scale-105 drop-shadow-xs hover:drop-shadow-md
                         `}
                       key={i}
                     >
@@ -456,7 +456,7 @@ const JobItem = ({ job }: { job: JobItemProps }) => {
       href={job.jobUrl}
       className="
         first-of-type:rounded-t-md last-of-type:rounded-b-md
-        cursor-pointer md:cursor-default bg-surface-75 border border-muted drop-shadow-sm p-4
+        cursor-pointer md:cursor-default bg-surface-75 border border-muted drop-shadow-xs p-4
         flex flex-col md:flex-row
         md:items-center
         transition hover:bg-surface-100
@@ -464,7 +464,7 @@ const JobItem = ({ job }: { job: JobItemProps }) => {
       "
       target="_blank"
     >
-      <h4 className="text-base min-w-[240px] lg:min-w-[316px] flex-grow sm:truncate mr-6">
+      <h4 className="text-base min-w-[240px] lg:min-w-[316px] grow sm:truncate mr-6">
         {job.title}
       </h4>
       <div className="flex justify-between justify-[normal] pt-2 md:pt-0 lg:w-1/3 items-center">

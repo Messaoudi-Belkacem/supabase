@@ -257,7 +257,7 @@ const InnovationTeams: NextPage = () => {
                         {option.type}
                       </span>
                       <h3 className="text-lg text-foreground font-medium mb-2">{option.title}</h3>
-                      <p className="text-foreground-lighter text-sm mb-6 flex-grow">
+                      <p className="text-foreground-lighter text-sm mb-6 grow">
                         {option.description}
                       </p>
                       <Button type={index === 0 ? 'primary' : 'default'} asChild>

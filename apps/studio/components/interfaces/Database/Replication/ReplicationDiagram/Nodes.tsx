@@ -55,7 +55,7 @@ export const PrimaryDatabaseNode = () => {
       {!!project && (
         <img
           alt="region icon"
-          className="w-8 rounded-sm mt-0.5"
+          className="w-8 rounded-xs mt-0.5"
           src={`${BASE_PATH}/img/regions/${project?.region}.svg`}
         />
       )}
