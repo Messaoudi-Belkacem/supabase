@@ -1,8 +1,9 @@
+@import 'tailwindcss';
+@config '../../../packages/config/tailwind.config.js';
+
 @import './../../../packages/ui/build/css/source/global.css';
 @import './../../../packages/ui/build/css/themes/dark.css';
 @import './../../../packages/ui/build/css/themes/light.css';
-
-@tailwind components;
 
 @font-face {
   font-family: 'custom-font';

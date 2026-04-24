@@ -1,5 +1,5 @@
-@tailwind base;
-@tailwind utilities;
+@import 'tailwindcss';
+@config '../../../packages/config/tailwind.config.js';
 
 @layer base {
   body {
