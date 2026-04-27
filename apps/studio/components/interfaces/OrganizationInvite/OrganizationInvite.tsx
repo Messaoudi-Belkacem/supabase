@@ -245,7 +245,7 @@ export const OrganizationInvite = () => {
   const isSignedOut = !effectiveIsLoggedIn || (!effectiveProfile && !effectiveIsLoadingProfile)
   const signedOutDescription = `Sign in${
     effectiveIsSignUpEnabled ? ' or create an account' : ''
-  } to view this invitation.`
+  } to view this invitation`
   const interstitialTitle = inviteIsNoLongerValid
     ? 'Invite no longer available'
     : effectiveIsErrorInvitation

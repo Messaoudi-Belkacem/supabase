@@ -51,7 +51,7 @@ export const InterstitialLayout = ({
   const descriptionElement = description ? (
     <div
       className={cn(
-        '!m-0 px-3 !text-balance text-sm text-foreground-lighter',
+        '!m-0 px-3 !text-balance text-sm text-foreground-lighter leading-tight',
         descriptionClassName
       )}
     >
@@ -60,11 +60,11 @@ export const InterstitialLayout = ({
   ) : null
 
   return (
-    <div className="flex min-h-screen w-full items-center justify-center bg-studio px-5">
+    <div className="flex min-h-screen w-full items-center justify-center bg-studio px-2">
       <MotionCard
         layout="size"
         transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-        className="overflow-hidden md:w-[400px]"
+        className="overflow-hidden max-w-[400px] w-full mx-auto"
       >
         {(logo || title || description || subtitle) && (
           <CardHeader className="font-normal items-center gap-0 px-6 py-6 text-center [--card-padding-x:1.5rem] border-0">
