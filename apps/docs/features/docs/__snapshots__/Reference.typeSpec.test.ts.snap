@@ -1536,8 +1536,13 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
           "shortText": "Creates an admin API client that can be used to manage users and OAuth clients.",
           "examples": [
             {
-              "id": "example-1",
-              "name": "Example 1",
+              "id": "using-supabase-js-recommended",
+              "name": "Using supabase-js (recommended)",
+              "code": "\`\`\`ts\\nimport { createClient } from '@supabase/supabase-js'\\n\\nconst supabase = createClient('https://xyzcompany.supabase.co', 'secret-or-service-role-key')\\nconst { data, error } = await supabase.auth.admin.listUsers()\\n\`\`\`"
+            },
+            {
+              "id": "standalone-import-for-bundle-sensitive-environments",
+              "name": "Standalone import for bundle-sensitive environments",
               "code": "\`\`\`ts\\nimport { GoTrueAdminApi } from '@supabase/auth-js'\\n\\nconst admin = new GoTrueAdminApi({\\n  url: 'https://xyzcompany.supabase.co/auth/v1',\\n  headers: { Authorization: \`Bearer \${process.env.SUPABASE_SERVICE_ROLE_KEY}\` },\\n})\\n\`\`\`"
             }
           ]
@@ -10302,9 +10307,14 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
           "shortText": "Create a new client for use in the browser.",
           "examples": [
             {
-              "id": "example-1",
-              "name": "Example 1",
-              "code": "\`\`\`ts\\nimport { GoTrueClient } from '@supabase/auth-js'\\n\\nconst auth = new GoTrueClient({\\n  url: 'https://xyzcompany.supabase.co/auth/v1',\\n  headers: { apikey: 'public-anon-key' },\\n  storageKey: 'supabase-auth',\\n})\\n\`\`\`"
+              "id": "using-supabase-js-recommended",
+              "name": "Using supabase-js (recommended)",
+              "code": "\`\`\`ts\\nimport { createClient } from '@supabase/supabase-js'\\n\\nconst supabase = createClient('https://xyzcompany.supabase.co', 'publishable-or-anon-key')\\nconst { data, error } = await supabase.auth.getUser()\\n\`\`\`"
+            },
+            {
+              "id": "standalone-import-for-bundle-sensitive-environments",
+              "name": "Standalone import for bundle-sensitive environments",
+              "code": "\`\`\`ts\\nimport { GoTrueClient } from '@supabase/auth-js'\\n\\nconst auth = new GoTrueClient({\\n  url: 'https://xyzcompany.supabase.co/auth/v1',\\n  headers: { apikey: 'publishable-or-anon-key' },\\n  storageKey: 'supabase-auth',\\n})\\n\`\`\`"
             }
           ]
         }
@@ -40221,14 +40231,14 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
           "shortText": "Creates a builder configured for a specific PostgREST request.",
           "examples": [
             {
-              "id": "example-1",
-              "name": "Example 1",
-              "code": "\`\`\`ts\\nimport { PostgrestQueryBuilder } from '@supabase/postgrest-js'\\n\\nconst builder = new PostgrestQueryBuilder(\\n  new URL('https://xyzcompany.supabase.co/rest/v1/users'),\\n  { headers: new Headers({ apikey: 'public-anon-key' }) }\\n)\\n\`\`\`"
+              "id": "using-supabase-js-recommended",
+              "name": "Using supabase-js (recommended)",
+              "code": "\`\`\`ts\\nimport { createClient } from '@supabase/supabase-js'\\n\\nconst supabase = createClient('https://xyzcompany.supabase.co', 'publishable-or-anon-key')\\nconst { data, error } = await supabase.from('users').select('*')\\n\`\`\`"
             },
             {
-              "id": "creating-a-postgrest-query-builder",
-              "name": "Creating a Postgrest query builder",
-              "code": "\`\`\`ts\\nimport { PostgrestQueryBuilder } from '@supabase/postgrest-js'\\n\\nconst builder = new PostgrestQueryBuilder(\\n  new URL('https://xyzcompany.supabase.co/rest/v1/users'),\\n  { headers: new Headers({ apikey: 'public-anon-key' }) }\\n)\\n\`\`\`"
+              "id": "standalone-import-for-bundle-sensitive-environments",
+              "name": "Standalone import for bundle-sensitive environments",
+              "code": "\`\`\`ts\\nimport { PostgrestQueryBuilder } from '@supabase/postgrest-js'\\n\\nconst builder = new PostgrestQueryBuilder(\\n  new URL('https://xyzcompany.supabase.co/rest/v1/users'),\\n  { headers: new Headers({ apikey: 'publishable-or-anon-key' }) }\\n)\\n\`\`\`"
             }
           ]
         }
@@ -40758,14 +40768,14 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
           "shortText": "Creates a builder configured for a specific PostgREST request.",
           "examples": [
             {
-              "id": "example-1",
-              "name": "Example 1",
-              "code": "\`\`\`ts\\nimport { PostgrestQueryBuilder } from '@supabase/postgrest-js'\\n\\nconst builder = new PostgrestQueryBuilder(\\n  new URL('https://xyzcompany.supabase.co/rest/v1/users'),\\n  { headers: new Headers({ apikey: 'public-anon-key' }) }\\n)\\n\`\`\`"
+              "id": "using-supabase-js-recommended",
+              "name": "Using supabase-js (recommended)",
+              "code": "\`\`\`ts\\nimport { createClient } from '@supabase/supabase-js'\\n\\nconst supabase = createClient('https://xyzcompany.supabase.co', 'publishable-or-anon-key')\\nconst { data, error } = await supabase.from('users').select('*')\\n\`\`\`"
             },
             {
-              "id": "creating-a-postgrest-query-builder",
-              "name": "Creating a Postgrest query builder",
-              "code": "\`\`\`ts\\nimport { PostgrestQueryBuilder } from '@supabase/postgrest-js'\\n\\nconst builder = new PostgrestQueryBuilder(\\n  new URL('https://xyzcompany.supabase.co/rest/v1/users'),\\n  { headers: new Headers({ apikey: 'public-anon-key' }) }\\n)\\n\`\`\`"
+              "id": "standalone-import-for-bundle-sensitive-environments",
+              "name": "Standalone import for bundle-sensitive environments",
+              "code": "\`\`\`ts\\nimport { PostgrestQueryBuilder } from '@supabase/postgrest-js'\\n\\nconst builder = new PostgrestQueryBuilder(\\n  new URL('https://xyzcompany.supabase.co/rest/v1/users'),\\n  { headers: new Headers({ apikey: 'publishable-or-anon-key' }) }\\n)\\n\`\`\`"
             }
           ]
         }
@@ -43770,9 +43780,14 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
           "shortText": "Creates a query builder scoped to a Postgres table or view.",
           "examples": [
             {
-              "id": "creating-a-postgrest-query-builder",
-              "name": "Creating a Postgrest query builder",
-              "code": "\`\`\`ts\\nimport { PostgrestQueryBuilder } from '@supabase/postgrest-js'\\n\\nconst query = new PostgrestQueryBuilder(\\n  new URL('https://xyzcompany.supabase.co/rest/v1/users'),\\n  { headers: { apikey: 'public-anon-key' }, retry: true }\\n)\\n\`\`\`"
+              "id": "using-supabase-js-recommended",
+              "name": "Using supabase-js (recommended)",
+              "code": "\`\`\`ts\\nimport { createClient } from '@supabase/supabase-js'\\n\\nconst supabase = createClient('https://xyzcompany.supabase.co', 'publishable-or-anon-key')\\nconst { data, error } = await supabase.from('users').select('*')\\n\`\`\`"
+            },
+            {
+              "id": "standalone-import-for-bundle-sensitive-environments",
+              "name": "Standalone import for bundle-sensitive environments",
+              "code": "\`\`\`ts\\nimport { PostgrestQueryBuilder } from '@supabase/postgrest-js'\\n\\nconst query = new PostgrestQueryBuilder(\\n  new URL('https://xyzcompany.supabase.co/rest/v1/users'),\\n  { headers: { apikey: 'publishable-or-anon-key' }, retry: true }\\n)\\n\`\`\`"
             }
           ]
         }
@@ -44562,14 +44577,14 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
           "shortText": "Creates a builder configured for a specific PostgREST request.",
           "examples": [
             {
-              "id": "example-1",
-              "name": "Example 1",
-              "code": "\`\`\`ts\\nimport { PostgrestQueryBuilder } from '@supabase/postgrest-js'\\n\\nconst builder = new PostgrestQueryBuilder(\\n  new URL('https://xyzcompany.supabase.co/rest/v1/users'),\\n  { headers: new Headers({ apikey: 'public-anon-key' }) }\\n)\\n\`\`\`"
+              "id": "using-supabase-js-recommended",
+              "name": "Using supabase-js (recommended)",
+              "code": "\`\`\`ts\\nimport { createClient } from '@supabase/supabase-js'\\n\\nconst supabase = createClient('https://xyzcompany.supabase.co', 'publishable-or-anon-key')\\nconst { data, error } = await supabase.from('users').select('*')\\n\`\`\`"
             },
             {
-              "id": "creating-a-postgrest-query-builder",
-              "name": "Creating a Postgrest query builder",
-              "code": "\`\`\`ts\\nimport { PostgrestQueryBuilder } from '@supabase/postgrest-js'\\n\\nconst builder = new PostgrestQueryBuilder(\\n  new URL('https://xyzcompany.supabase.co/rest/v1/users'),\\n  { headers: new Headers({ apikey: 'public-anon-key' }) }\\n)\\n\`\`\`"
+              "id": "standalone-import-for-bundle-sensitive-environments",
+              "name": "Standalone import for bundle-sensitive environments",
+              "code": "\`\`\`ts\\nimport { PostgrestQueryBuilder } from '@supabase/postgrest-js'\\n\\nconst builder = new PostgrestQueryBuilder(\\n  new URL('https://xyzcompany.supabase.co/rest/v1/users'),\\n  { headers: new Headers({ apikey: 'publishable-or-anon-key' }) }\\n)\\n\`\`\`"
             }
           ]
         }
@@ -45674,9 +45689,14 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
           "shortText": "Creates a channel that can broadcast messages, sync presence, and listen to Postgres changes.\\n\\nThe topic determines which realtime stream you are subscribing to. Config options let you\\nenable acknowledgement for broadcasts, presence tracking, or private channels.",
           "examples": [
             {
-              "id": "example-for-a-public-channel",
-              "name": "Example for a public channel",
-              "code": "\`\`\`ts\\nimport RealtimeClient from '@supabase/realtime-js'\\n\\nconst client = new RealtimeClient('https://xyzcompany.supabase.co/realtime/v1', {\\n  params: { apikey: 'public-anon-key' },\\n})\\nconst channel = new RealtimeChannel('realtime:public:messages', { config: {} }, client)\\n\`\`\`"
+              "id": "using-supabase-js-recommended",
+              "name": "Using supabase-js (recommended)",
+              "code": "\`\`\`ts\\nimport { createClient } from '@supabase/supabase-js'\\n\\nconst supabase = createClient('https://xyzcompany.supabase.co', 'publishable-or-anon-key')\\nconst channel = supabase.channel('room1')\\nchannel\\n  .on('broadcast', { event: 'cursor-pos' }, (payload) => console.log(payload))\\n  .subscribe()\\n\`\`\`"
+            },
+            {
+              "id": "standalone-import-for-bundle-sensitive-environments",
+              "name": "Standalone import for bundle-sensitive environments",
+              "code": "\`\`\`ts\\nimport RealtimeClient from '@supabase/realtime-js'\\n\\nconst client = new RealtimeClient('https://xyzcompany.supabase.co/realtime/v1', {\\n  params: { apikey: 'publishable-or-anon-key' },\\n})\\nconst channel = new RealtimeChannel('realtime:public:messages', { config: {} }, client)\\n\`\`\`"
             }
           ]
         }
@@ -45992,9 +46012,14 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
           "shortText": "Initializes the Socket.",
           "examples": [
             {
-              "id": "example-for-a-public-channel",
-              "name": "Example for a public channel",
-              "code": "\`\`\`ts\\nimport RealtimeClient from '@supabase/realtime-js'\\n\\nconst client = new RealtimeClient('https://xyzcompany.supabase.co/realtime/v1', {\\n  params: { apikey: 'public-anon-key' },\\n})\\nclient.connect()\\n\`\`\`"
+              "id": "using-supabase-js-recommended",
+              "name": "Using supabase-js (recommended)",
+              "code": "\`\`\`ts\\nimport { createClient } from '@supabase/supabase-js'\\n\\nconst supabase = createClient('https://xyzcompany.supabase.co', 'publishable-or-anon-key')\\nconst channel = supabase.channel('room1')\\nchannel\\n  .on('broadcast', { event: 'cursor-pos' }, (payload) => console.log(payload))\\n  .subscribe()\\n\`\`\`"
+            },
+            {
+              "id": "standalone-import-for-bundle-sensitive-environments",
+              "name": "Standalone import for bundle-sensitive environments",
+              "code": "\`\`\`ts\\nimport RealtimeClient from '@supabase/realtime-js'\\n\\nconst client = new RealtimeClient('https://xyzcompany.supabase.co/realtime/v1', {\\n  params: { apikey: 'publishable-or-anon-key' },\\n})\\nclient.connect()\\n\`\`\`"
             }
           ]
         }
@@ -49180,7 +49205,7 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
             {
               "id": "with-a-database-query",
               "name": "With a database query",
-              "code": "\`\`\`ts\\nimport { createClient } from '@supabase/supabase-js'\\n\\nconst supabase = createClient('https://xyzcompany.supabase.co', 'public-anon-key')\\n\\nconst { data } = await supabase.from('profiles').select('*')\\n\`\`\`"
+              "code": "\`\`\`ts\\nimport { createClient } from '@supabase/supabase-js'\\n\\nconst supabase = createClient('https://xyzcompany.supabase.co', 'publishable-or-anon-key')\\n\\nconst { data } = await supabase.from('profiles').select('*')\\n\`\`\`"
             }
           ]
         }
@@ -51390,8 +51415,13 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
           "shortText": "Creates an admin API client that can be used to manage users and OAuth clients.",
           "examples": [
             {
-              "id": "example-1",
-              "name": "Example 1",
+              "id": "using-supabase-js-recommended",
+              "name": "Using supabase-js (recommended)",
+              "code": "\`\`\`ts\\nimport { createClient } from '@supabase/supabase-js'\\n\\nconst supabase = createClient('https://xyzcompany.supabase.co', 'secret-or-service-role-key')\\nconst { data, error } = await supabase.auth.admin.listUsers()\\n\`\`\`"
+            },
+            {
+              "id": "standalone-import-for-bundle-sensitive-environments",
+              "name": "Standalone import for bundle-sensitive environments",
               "code": "\`\`\`ts\\nimport { GoTrueAdminApi } from '@supabase/auth-js'\\n\\nconst admin = new GoTrueAdminApi({\\n  url: 'https://xyzcompany.supabase.co/auth/v1',\\n  headers: { Authorization: \`Bearer \${process.env.SUPABASE_SERVICE_ROLE_KEY}\` },\\n})\\n\`\`\`"
             }
           ]
@@ -60153,9 +60183,14 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
           "shortText": "Create a new client for use in the browser.",
           "examples": [
             {
-              "id": "example-1",
-              "name": "Example 1",
-              "code": "\`\`\`ts\\nimport { GoTrueClient } from '@supabase/auth-js'\\n\\nconst auth = new GoTrueClient({\\n  url: 'https://xyzcompany.supabase.co/auth/v1',\\n  headers: { apikey: 'public-anon-key' },\\n  storageKey: 'supabase-auth',\\n})\\n\`\`\`"
+              "id": "using-supabase-js-recommended",
+              "name": "Using supabase-js (recommended)",
+              "code": "\`\`\`ts\\nimport { createClient } from '@supabase/supabase-js'\\n\\nconst supabase = createClient('https://xyzcompany.supabase.co', 'publishable-or-anon-key')\\nconst { data, error } = await supabase.auth.getUser()\\n\`\`\`"
+            },
+            {
+              "id": "standalone-import-for-bundle-sensitive-environments",
+              "name": "Standalone import for bundle-sensitive environments",
+              "code": "\`\`\`ts\\nimport { GoTrueClient } from '@supabase/auth-js'\\n\\nconst auth = new GoTrueClient({\\n  url: 'https://xyzcompany.supabase.co/auth/v1',\\n  headers: { apikey: 'publishable-or-anon-key' },\\n  storageKey: 'supabase-auth',\\n})\\n\`\`\`"
             }
           ]
         }
@@ -86962,14 +86997,14 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
           "shortText": "Creates a builder configured for a specific PostgREST request.",
           "examples": [
             {
-              "id": "example-1",
-              "name": "Example 1",
-              "code": "\`\`\`ts\\nimport { PostgrestQueryBuilder } from '@supabase/postgrest-js'\\n\\nconst builder = new PostgrestQueryBuilder(\\n  new URL('https://xyzcompany.supabase.co/rest/v1/users'),\\n  { headers: new Headers({ apikey: 'public-anon-key' }) }\\n)\\n\`\`\`"
+              "id": "using-supabase-js-recommended",
+              "name": "Using supabase-js (recommended)",
+              "code": "\`\`\`ts\\nimport { createClient } from '@supabase/supabase-js'\\n\\nconst supabase = createClient('https://xyzcompany.supabase.co', 'publishable-or-anon-key')\\nconst { data, error } = await supabase.from('users').select('*')\\n\`\`\`"
             },
             {
-              "id": "creating-a-postgrest-query-builder",
-              "name": "Creating a Postgrest query builder",
-              "code": "\`\`\`ts\\nimport { PostgrestQueryBuilder } from '@supabase/postgrest-js'\\n\\nconst builder = new PostgrestQueryBuilder(\\n  new URL('https://xyzcompany.supabase.co/rest/v1/users'),\\n  { headers: new Headers({ apikey: 'public-anon-key' }) }\\n)\\n\`\`\`"
+              "id": "standalone-import-for-bundle-sensitive-environments",
+              "name": "Standalone import for bundle-sensitive environments",
+              "code": "\`\`\`ts\\nimport { PostgrestQueryBuilder } from '@supabase/postgrest-js'\\n\\nconst builder = new PostgrestQueryBuilder(\\n  new URL('https://xyzcompany.supabase.co/rest/v1/users'),\\n  { headers: new Headers({ apikey: 'publishable-or-anon-key' }) }\\n)\\n\`\`\`"
             }
           ]
         }
@@ -87362,19 +87397,14 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
           "text": "- A \`timeout\` option (in milliseconds) can be set to automatically abort requests that take too long.\\n- A \`urlLengthLimit\` option (default: 8000) can be set to control when URL length warnings are included in error messages for aborted requests.",
           "examples": [
             {
-              "id": "example-1",
-              "name": "Example 1",
-              "code": "\`\`\`ts\\nimport { PostgrestClient } from '@supabase/postgrest-js'\\n\\nconst postgrest = new PostgrestClient('https://xyzcompany.supabase.co/rest/v1', {\\n  headers: { apikey: 'public-anon-key' },\\n  schema: 'public',\\n  timeout: 30000, // 30 second timeout\\n})\\n\`\`\`"
+              "id": "using-supabase-js-recommended",
+              "name": "Using supabase-js (recommended)",
+              "code": "\`\`\`ts\\nimport { createClient } from '@supabase/supabase-js'\\n\\nconst supabase = createClient('https://xyzcompany.supabase.co', 'publishable-or-anon-key')\\nconst { data, error } = await supabase.from('profiles').select('*')\\n\`\`\`"
             },
             {
-              "id": "creating-a-postgrest-client",
-              "name": "Creating a Postgrest client",
-              "code": "\`\`\`ts\\nimport { PostgrestClient } from '@supabase/postgrest-js'\\n\\nconst postgrest = new PostgrestClient('https://xyzcompany.supabase.co/rest/v1', {\\n  headers: { apikey: 'public-anon-key' },\\n  schema: 'public',\\n})\\n\`\`\`"
-            },
-            {
-              "id": "with-timeout",
-              "name": "With timeout",
-              "code": "\`\`\`ts\\nimport { PostgrestClient } from '@supabase/postgrest-js'\\n\\nconst postgrest = new PostgrestClient('https://xyzcompany.supabase.co/rest/v1', {\\n  headers: { apikey: 'public-anon-key' },\\n  schema: 'public',\\n  timeout: 30000, // 30 second timeout\\n  retry: false, // Disable automatic retries\\n})\\n\`\`\`"
+              "id": "standalone-import-for-bundle-sensitive-environments",
+              "name": "Standalone import for bundle-sensitive environments",
+              "code": "\`\`\`ts\\nimport { PostgrestClient } from '@supabase/postgrest-js'\\n\\nconst postgrest = new PostgrestClient('https://xyzcompany.supabase.co/rest/v1', {\\n  headers: { apikey: 'publishable-or-anon-key' },\\n  schema: 'public',\\n  timeout: 30000, // 30 second timeout\\n})\\n\`\`\`"
             }
           ]
         }
@@ -87865,14 +87895,14 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
           "shortText": "Creates a builder configured for a specific PostgREST request.",
           "examples": [
             {
-              "id": "example-1",
-              "name": "Example 1",
-              "code": "\`\`\`ts\\nimport { PostgrestQueryBuilder } from '@supabase/postgrest-js'\\n\\nconst builder = new PostgrestQueryBuilder(\\n  new URL('https://xyzcompany.supabase.co/rest/v1/users'),\\n  { headers: new Headers({ apikey: 'public-anon-key' }) }\\n)\\n\`\`\`"
+              "id": "using-supabase-js-recommended",
+              "name": "Using supabase-js (recommended)",
+              "code": "\`\`\`ts\\nimport { createClient } from '@supabase/supabase-js'\\n\\nconst supabase = createClient('https://xyzcompany.supabase.co', 'publishable-or-anon-key')\\nconst { data, error } = await supabase.from('users').select('*')\\n\`\`\`"
             },
             {
-              "id": "creating-a-postgrest-query-builder",
-              "name": "Creating a Postgrest query builder",
-              "code": "\`\`\`ts\\nimport { PostgrestQueryBuilder } from '@supabase/postgrest-js'\\n\\nconst builder = new PostgrestQueryBuilder(\\n  new URL('https://xyzcompany.supabase.co/rest/v1/users'),\\n  { headers: new Headers({ apikey: 'public-anon-key' }) }\\n)\\n\`\`\`"
+              "id": "standalone-import-for-bundle-sensitive-environments",
+              "name": "Standalone import for bundle-sensitive environments",
+              "code": "\`\`\`ts\\nimport { PostgrestQueryBuilder } from '@supabase/postgrest-js'\\n\\nconst builder = new PostgrestQueryBuilder(\\n  new URL('https://xyzcompany.supabase.co/rest/v1/users'),\\n  { headers: new Headers({ apikey: 'publishable-or-anon-key' }) }\\n)\\n\`\`\`"
             }
           ]
         }
@@ -91373,9 +91403,14 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
           "shortText": "Creates a query builder scoped to a Postgres table or view.",
           "examples": [
             {
-              "id": "creating-a-postgrest-query-builder",
-              "name": "Creating a Postgrest query builder",
-              "code": "\`\`\`ts\\nimport { PostgrestQueryBuilder } from '@supabase/postgrest-js'\\n\\nconst query = new PostgrestQueryBuilder(\\n  new URL('https://xyzcompany.supabase.co/rest/v1/users'),\\n  { headers: { apikey: 'public-anon-key' }, retry: true }\\n)\\n\`\`\`"
+              "id": "using-supabase-js-recommended",
+              "name": "Using supabase-js (recommended)",
+              "code": "\`\`\`ts\\nimport { createClient } from '@supabase/supabase-js'\\n\\nconst supabase = createClient('https://xyzcompany.supabase.co', 'publishable-or-anon-key')\\nconst { data, error } = await supabase.from('users').select('*')\\n\`\`\`"
+            },
+            {
+              "id": "standalone-import-for-bundle-sensitive-environments",
+              "name": "Standalone import for bundle-sensitive environments",
+              "code": "\`\`\`ts\\nimport { PostgrestQueryBuilder } from '@supabase/postgrest-js'\\n\\nconst query = new PostgrestQueryBuilder(\\n  new URL('https://xyzcompany.supabase.co/rest/v1/users'),\\n  { headers: { apikey: 'publishable-or-anon-key' }, retry: true }\\n)\\n\`\`\`"
             }
           ]
         }
@@ -92240,14 +92275,14 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
           "shortText": "Creates a builder configured for a specific PostgREST request.",
           "examples": [
             {
-              "id": "example-1",
-              "name": "Example 1",
-              "code": "\`\`\`ts\\nimport { PostgrestQueryBuilder } from '@supabase/postgrest-js'\\n\\nconst builder = new PostgrestQueryBuilder(\\n  new URL('https://xyzcompany.supabase.co/rest/v1/users'),\\n  { headers: new Headers({ apikey: 'public-anon-key' }) }\\n)\\n\`\`\`"
+              "id": "using-supabase-js-recommended",
+              "name": "Using supabase-js (recommended)",
+              "code": "\`\`\`ts\\nimport { createClient } from '@supabase/supabase-js'\\n\\nconst supabase = createClient('https://xyzcompany.supabase.co', 'publishable-or-anon-key')\\nconst { data, error } = await supabase.from('users').select('*')\\n\`\`\`"
             },
             {
-              "id": "creating-a-postgrest-query-builder",
-              "name": "Creating a Postgrest query builder",
-              "code": "\`\`\`ts\\nimport { PostgrestQueryBuilder } from '@supabase/postgrest-js'\\n\\nconst builder = new PostgrestQueryBuilder(\\n  new URL('https://xyzcompany.supabase.co/rest/v1/users'),\\n  { headers: new Headers({ apikey: 'public-anon-key' }) }\\n)\\n\`\`\`"
+              "id": "standalone-import-for-bundle-sensitive-environments",
+              "name": "Standalone import for bundle-sensitive environments",
+              "code": "\`\`\`ts\\nimport { PostgrestQueryBuilder } from '@supabase/postgrest-js'\\n\\nconst builder = new PostgrestQueryBuilder(\\n  new URL('https://xyzcompany.supabase.co/rest/v1/users'),\\n  { headers: new Headers({ apikey: 'publishable-or-anon-key' }) }\\n)\\n\`\`\`"
             }
           ]
         }
@@ -93477,9 +93512,14 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
           "shortText": "Creates a channel that can broadcast messages, sync presence, and listen to Postgres changes.\\n\\nThe topic determines which realtime stream you are subscribing to. Config options let you\\nenable acknowledgement for broadcasts, presence tracking, or private channels.",
           "examples": [
             {
-              "id": "example-for-a-public-channel",
-              "name": "Example for a public channel",
-              "code": "\`\`\`ts\\nimport RealtimeClient from '@supabase/realtime-js'\\n\\nconst client = new RealtimeClient('https://xyzcompany.supabase.co/realtime/v1', {\\n  params: { apikey: 'public-anon-key' },\\n})\\nconst channel = new RealtimeChannel('realtime:public:messages', { config: {} }, client)\\n\`\`\`"
+              "id": "using-supabase-js-recommended",
+              "name": "Using supabase-js (recommended)",
+              "code": "\`\`\`ts\\nimport { createClient } from '@supabase/supabase-js'\\n\\nconst supabase = createClient('https://xyzcompany.supabase.co', 'publishable-or-anon-key')\\nconst channel = supabase.channel('room1')\\nchannel\\n  .on('broadcast', { event: 'cursor-pos' }, (payload) => console.log(payload))\\n  .subscribe()\\n\`\`\`"
+            },
+            {
+              "id": "standalone-import-for-bundle-sensitive-environments",
+              "name": "Standalone import for bundle-sensitive environments",
+              "code": "\`\`\`ts\\nimport RealtimeClient from '@supabase/realtime-js'\\n\\nconst client = new RealtimeClient('https://xyzcompany.supabase.co/realtime/v1', {\\n  params: { apikey: 'publishable-or-anon-key' },\\n})\\nconst channel = new RealtimeChannel('realtime:public:messages', { config: {} }, client)\\n\`\`\`"
             }
           ]
         }
@@ -93795,9 +93835,14 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
           "shortText": "Initializes the Socket.",
           "examples": [
             {
-              "id": "example-for-a-public-channel",
-              "name": "Example for a public channel",
-              "code": "\`\`\`ts\\nimport RealtimeClient from '@supabase/realtime-js'\\n\\nconst client = new RealtimeClient('https://xyzcompany.supabase.co/realtime/v1', {\\n  params: { apikey: 'public-anon-key' },\\n})\\nclient.connect()\\n\`\`\`"
+              "id": "using-supabase-js-recommended",
+              "name": "Using supabase-js (recommended)",
+              "code": "\`\`\`ts\\nimport { createClient } from '@supabase/supabase-js'\\n\\nconst supabase = createClient('https://xyzcompany.supabase.co', 'publishable-or-anon-key')\\nconst channel = supabase.channel('room1')\\nchannel\\n  .on('broadcast', { event: 'cursor-pos' }, (payload) => console.log(payload))\\n  .subscribe()\\n\`\`\`"
+            },
+            {
+              "id": "standalone-import-for-bundle-sensitive-environments",
+              "name": "Standalone import for bundle-sensitive environments",
+              "code": "\`\`\`ts\\nimport RealtimeClient from '@supabase/realtime-js'\\n\\nconst client = new RealtimeClient('https://xyzcompany.supabase.co/realtime/v1', {\\n  params: { apikey: 'publishable-or-anon-key' },\\n})\\nclient.connect()\\n\`\`\`"
             }
           ]
         }
@@ -97009,9 +97054,14 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
           "shortText": "Creates a client for Storage buckets, files, analytics, and vectors.",
           "examples": [
             {
-              "id": "creating-a-storage-client",
-              "name": "Creating a Storage client",
-              "code": "\`\`\`ts\\nimport { StorageClient } from '@supabase/storage-js'\\n\\nconst storage = new StorageClient('https://xyzcompany.supabase.co/storage/v1', {\\n  apikey: 'public-anon-key',\\n})\\nconst avatars = storage.from('avatars')\\n\`\`\`"
+              "id": "using-supabase-js-recommended",
+              "name": "Using supabase-js (recommended)",
+              "code": "\`\`\`ts\\nimport { createClient } from '@supabase/supabase-js'\\n\\nconst supabase = createClient('https://xyzcompany.supabase.co', 'publishable-or-anon-key')\\nconst avatars = supabase.storage.from('avatars')\\n\`\`\`"
+            },
+            {
+              "id": "standalone-import-for-bundle-sensitive-environments",
+              "name": "Standalone import for bundle-sensitive environments",
+              "code": "\`\`\`ts\\nimport { StorageClient } from '@supabase/storage-js'\\n\\nconst storage = new StorageClient('https://xyzcompany.supabase.co/storage/v1', {\\n  apikey: 'publishable-or-anon-key',\\n})\\nconst avatars = storage.from('avatars')\\n\`\`\`"
             }
           ]
         }
@@ -98900,9 +98950,14 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
           ],
           "examples": [
             {
-              "id": "creating-a-storageanalyticsclient-instance",
-              "name": "Creating a StorageAnalyticsClient instance",
-              "code": "\`\`\`typescript\\nconst client = new StorageAnalyticsClient(url, headers)\\n\`\`\`"
+              "id": "using-supabase-js-recommended",
+              "name": "Using supabase-js (recommended)",
+              "code": "\`\`\`typescript\\nimport { createClient } from '@supabase/supabase-js'\\n\\nconst supabase = createClient('https://xyzcompany.supabase.co', 'publishable-or-anon-key')\\nconst { data, error } = await supabase.storage.analytics.listBuckets()\\n\`\`\`"
+            },
+            {
+              "id": "standalone-import-for-bundle-sensitive-environments",
+              "name": "Standalone import for bundle-sensitive environments",
+              "code": "\`\`\`typescript\\nimport { StorageAnalyticsClient } from '@supabase/storage-js'\\n\\nconst client = new StorageAnalyticsClient(url, headers)\\n\`\`\`"
             }
           ]
         }
@@ -103923,9 +103978,14 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
           ],
           "examples": [
             {
-              "id": "creating-a-storagevectorsclient-instance",
-              "name": "Creating a StorageVectorsClient instance",
-              "code": "\`\`\`typescript\\nconst client = new StorageVectorsClient(url, options)\\n\`\`\`"
+              "id": "using-supabase-js-recommended",
+              "name": "Using supabase-js (recommended)",
+              "code": "\`\`\`typescript\\nimport { createClient } from '@supabase/supabase-js'\\n\\nconst supabase = createClient('https://xyzcompany.supabase.co', 'publishable-or-anon-key')\\nconst bucket = supabase.storage.vectors.from('embeddings-prod')\\n\`\`\`"
+            },
+            {
+              "id": "standalone-import-for-bundle-sensitive-environments",
+              "name": "Standalone import for bundle-sensitive environments",
+              "code": "\`\`\`typescript\\nimport { StorageVectorsClient } from '@supabase/storage-js'\\n\\nconst client = new StorageVectorsClient(url, options)\\n\`\`\`"
             }
           ]
         }
@@ -106483,14 +106543,14 @@ exports[`TS type spec parsing > matches snapshot 1`] = `
           "shortText": "Creates a new Functions client bound to an Edge Functions URL.",
           "examples": [
             {
-              "id": "example-1",
-              "name": "Example 1",
-              "code": "\`\`\`ts\\nimport { FunctionsClient, FunctionRegion } from '@supabase/functions-js'\\n\\nconst functions = new FunctionsClient('https://xyzcompany.supabase.co/functions/v1', {\\n  headers: { apikey: 'public-anon-key' },\\n  region: FunctionRegion.UsEast1,\\n})\\n\`\`\`"
+              "id": "using-supabase-js-recommended",
+              "name": "Using supabase-js (recommended)",
+              "code": "\`\`\`ts\\nimport { createClient } from '@supabase/supabase-js'\\n\\nconst supabase = createClient('https://xyzcompany.supabase.co', 'publishable-or-anon-key')\\nconst { data, error } = await supabase.functions.invoke('hello-world')\\n\`\`\`"
             },
             {
-              "id": "creating-a-functions-client",
-              "name": "Creating a Functions client",
-              "code": "\`\`\`ts\\nimport { FunctionsClient, FunctionRegion } from '@supabase/functions-js'\\n\\nconst functions = new FunctionsClient('https://xyzcompany.supabase.co/functions/v1', {\\n  headers: { apikey: 'public-anon-key' },\\n  region: FunctionRegion.UsEast1,\\n})\\n\`\`\`"
+              "id": "standalone-import-for-bundle-sensitive-environments",
+              "name": "Standalone import for bundle-sensitive environments",
+              "code": "\`\`\`ts\\nimport { FunctionsClient, FunctionRegion } from '@supabase/functions-js'\\n\\nconst functions = new FunctionsClient('https://xyzcompany.supabase.co/functions/v1', {\\n  headers: { apikey: 'publishable-or-anon-key' },\\n  region: FunctionRegion.UsEast1,\\n})\\n\`\`\`"
             }
           ]
         }
