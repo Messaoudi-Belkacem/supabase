@@ -155,18 +155,20 @@ export const Admonition = forwardRef<
               'flex-col @md:flex-row @md:items-center @md:justify-between @md:gap-x-6 @lg:gap-x-8'
           )}
         >
-          {label || title ? (
+          {label || title || description ? (
             <div>
-              <AlertTitle_Shadcn_
-                {...childProps.title}
-                className={cn(
-                  'text mt-0.5 flex gap-3 text-sm',
-                  !label && 'flex-col',
-                  childProps.title?.className
-                )}
-              >
-                {label || title}
-              </AlertTitle_Shadcn_>
+              {(label || title) && (
+                <AlertTitle_Shadcn_
+                  {...childProps.title}
+                  className={cn(
+                    'text mt-0.5 flex gap-3 text-sm',
+                    !label && 'flex-col',
+                    childProps.title?.className
+                  )}
+                >
+                  {label || title}
+                </AlertTitle_Shadcn_>
+              )}
               {description && (
                 <AlertDescription_Shadcn_ className={childProps.description?.className}>
                   {description}

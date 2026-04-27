@@ -7,17 +7,20 @@ import {
   Button,
   Card,
   CardContent,
-  CardFooter,
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
   DropdownMenuTrigger,
 } from 'ui'
-import { Admonition, GenericSkeletonLoader } from 'ui-patterns'
+import { Admonition, ShimmeringLoader } from 'ui-patterns'
 
 import { OrganizationInviteError } from './OrganizationInviteError'
-import { ProfileImage } from '@/components/ui/ProfileImage'
+import {
+  InterstitialAccountRow,
+  InterstitialLayout,
+  SupabaseLogo,
+} from '@/components/layouts/InterstitialLayout'
 import { useOrganizationAcceptInvitationMutation } from '@/data/organization-members/organization-invitation-accept-mutation'
 import {
   useOrganizationInvitationTokenQuery,
@@ -148,19 +151,30 @@ const INVITE_MOCKS: Record<MockState, MockConfig> = {
   },
 }
 
+const getMockState = (value: unknown): MockState | undefined => {
+  return typeof value === 'string' && value in INVITE_MOCKS ? (value as MockState) : undefined
+}
+
 export const OrganizationInvite = () => {
   const router = useRouter()
   const isLoggedIn = useIsLoggedIn()
   const { profile, isLoading: isLoadingProfile } = useProfile()
   const { username, avatarUrl, primaryEmail } = useProfileNameAndPicture()
   const { slug, token } = useParams()
-  const mockParam = router.query.mock as MockState | undefined
-  const isMockMode =
-    process.env.NODE_ENV !== 'production' && !!mockParam && mockParam in INVITE_MOCKS
-  const mockConfig = isMockMode ? INVITE_MOCKS[mockParam] : undefined
 
   const isSignUpEnabled = useIsFeatureEnabled('dashboard_auth:sign_up')
+  const [hasMounted, setHasMounted] = useState(false)
   const [mockJoining, setMockJoining] = useState(false)
+
+  const mockParamFromQuery = getMockState(router.query.mock)
+  const isMockMode =
+    process.env.NODE_ENV !== 'production' && hasMounted && router.isReady && !!mockParamFromQuery
+  const mockParam = isMockMode ? mockParamFromQuery : undefined
+  const mockConfig = mockParam ? INVITE_MOCKS[mockParam] : undefined
+
+  useEffect(() => {
+    setHasMounted(true)
+  }, [])
 
   useEffect(() => {
     setMockJoining(false)
@@ -177,7 +191,7 @@ export const OrganizationInvite = () => {
     {
       retry: false,
       refetchOnWindowFocus: false,
-      enabled: !!profile && !isMockMode,
+      enabled: !!profile && !isMockMode && !!slug && !!token,
     }
   )
   const effectiveIsLoggedIn = isMockMode ? (mockConfig?.isLoggedIn ?? false) : isLoggedIn
@@ -204,7 +218,7 @@ export const OrganizationInvite = () => {
     : isErrorInvitation
   const effectiveIsLoadingInvitation = isMockMode
     ? mockConfig?.invitationState === 'loading'
-    : isLoadingInvitation
+    : !router.isReady || isLoadingInvitation
   const effectiveHasError =
     effectiveIsErrorInvitation ||
     (effectiveIsSuccessInvitation &&
@@ -216,9 +230,40 @@ export const OrganizationInvite = () => {
     effectiveError?.code === 401 &&
     effectiveError.message.includes('Failed to retrieve organization')
 
-  const organizationName = effectiveIsSuccessInvitation
-    ? effectiveData?.organization_name
-    : 'an organization'
+  const isInvitationLoading = effectiveIsLoadingProfile || effectiveIsLoadingInvitation
+  const showOrganizationHeader =
+    effectiveIsSuccessInvitation &&
+    !!effectiveData &&
+    !effectiveData.token_does_not_exist &&
+    !effectiveData.expired_token
+  const organizationName = effectiveData?.organization_name ?? 'an organization'
+  const organizationSlug = showOrganizationHeader
+    ? isMockMode
+      ? 'rbrcvutranxovfzrovye'
+      : slug
+    : undefined
+  const isSignedOut = !effectiveIsLoggedIn || (!effectiveProfile && !effectiveIsLoadingProfile)
+  const signedOutDescription = `Sign in${
+    effectiveIsSignUpEnabled ? ' or create an account' : ''
+  } to view this invitation.`
+  const interstitialTitle = inviteIsNoLongerValid
+    ? 'Invite no longer available'
+    : effectiveIsErrorInvitation
+      ? 'Unable to load invitation'
+      : effectiveData?.expired_token
+        ? 'Invite expired'
+        : effectiveData?.token_does_not_exist
+          ? 'Invite invalid'
+          : showOrganizationHeader
+            ? organizationName
+            : isSignedOut
+              ? 'View invitation'
+              : undefined
+  const interstitialDescription = showOrganizationHeader
+    ? 'You have been invited to join'
+    : isSignedOut
+      ? signedOutDescription
+      : undefined
   const invitationPath = isMockMode
     ? `/join?mock=${mockParam}`
     : `/join?token=${token}&slug=${slug}`
@@ -280,55 +325,88 @@ export const OrganizationInvite = () => {
   const withMockSwitcher = (children: ReactNode) => (
     <>
       {mockSwitcher}
-      {children}
+      <InterstitialLayout
+        logo={<SupabaseLogo />}
+        title={
+          isInvitationLoading ? (
+            <ShimmeringLoader className="mx-auto h-7 w-36 max-w-full py-0" />
+          ) : interstitialTitle ? (
+            interstitialTitle
+          ) : undefined
+        }
+        description={
+          isInvitationLoading ? (
+            <ShimmeringLoader className="mx-auto h-4 w-48 max-w-full py-0" />
+          ) : interstitialDescription ? (
+            interstitialDescription
+          ) : undefined
+        }
+        subtitle={
+          isInvitationLoading ? (
+            <ShimmeringLoader className="mx-auto h-5 w-24 max-w-full rounded-full py-0" />
+          ) : organizationSlug ? (
+            <p className="mx-auto w-fit rounded-full border border-muted px-2 py-1 font-mono text-[11px] tracking-tight text-foreground-lighter">
+              {organizationSlug}
+            </p>
+          ) : undefined
+        }
+        headerOrder={
+          showOrganizationHeader || isInvitationLoading ? 'description-first' : 'title-first'
+        }
+        titleClassName="text-xl"
+        subtitleClassName="leading-none"
+      >
+        <div className="px-6 pb-6">{children}</div>
+      </InterstitialLayout>
     </>
   )
 
-  if (!effectiveIsLoggedIn || (!effectiveProfile && !effectiveIsLoadingProfile)) {
+  if (isSignedOut) {
     return withMockSwitcher(
-      <>
-        <CardContent className="text-center">
-          <p className="text-center text-sm text-foreground-light text-balance">
-            Sign in{effectiveIsSignUpEnabled ? ' or create an account' : ''} to view this invitation
-          </p>
-        </CardContent>
-        <CardFooter className="justify-center gap-3">
-          <Button asChild type="default">
-            <Link href={loginRedirectLink}>Sign in</Link>
+      <div className="flex flex-col gap-2">
+        <Button asChild type="primary" block>
+          <Link href={loginRedirectLink}>Sign in</Link>
+        </Button>
+        {effectiveIsSignUpEnabled && (
+          <Button asChild type="default" block>
+            <Link href={signupRedirectLink}>Create an account</Link>
           </Button>
-          {effectiveIsSignUpEnabled && (
-            <Button asChild type="default">
-              <Link href={signupRedirectLink}>Create an account</Link>
-            </Button>
-          )}
-        </CardFooter>
-      </>
+        )}
+      </div>
     )
   }
 
-  if (effectiveIsLoadingProfile || effectiveIsLoadingInvitation) {
+  if (isInvitationLoading) {
     return withMockSwitcher(
-      <CardContent>
-        <GenericSkeletonLoader />
-      </CardContent>
+      <div className="flex flex-col gap-6">
+        <Card className="shadow-none">
+          <CardContent className="flex items-center gap-3 border-none px-4 py-3">
+            <ShimmeringLoader className="size-8 flex-shrink-0 rounded-full py-0" />
+            <div className="min-w-0 flex-1 space-y-2">
+              <ShimmeringLoader className="h-3 w-20 py-0" />
+              <ShimmeringLoader className="h-4 w-40 max-w-full py-0" />
+            </div>
+          </CardContent>
+        </Card>
+        <div className="flex flex-col gap-2">
+          <ShimmeringLoader className="h-10 w-full py-0" />
+          <ShimmeringLoader className="h-10 w-full py-0" />
+        </div>
+      </div>
     )
   }
 
   if (inviteIsNoLongerValid) {
     return withMockSwitcher(
-      <CardContent>
+      <div className="flex flex-col gap-3">
         <Admonition
           type="warning"
-          title="Invite no longer available"
           description="This invite has already been accepted or declined."
-          layout="responsive"
-          actions={
-            <Button type="default" asChild>
-              <Link href="/">Back to dashboard</Link>
-            </Button>
-          }
         />
-      </CardContent>
+        <Button type="default" block asChild>
+          <Link href="/">Back to dashboard</Link>
+        </Button>
+      </div>
     )
   }
 
@@ -351,43 +429,23 @@ export const OrganizationInvite = () => {
   }
 
   return withMockSwitcher(
-    <>
-      <CardContent className="space-y-4">
-        <p className="text-center text-sm text-foreground-light text-balance">
-          You have been invited to join{' '}
-          <strong className="text-foreground">{organizationName}</strong>
-        </p>
+    <div className="flex flex-col gap-6">
+      <InterstitialAccountRow avatarUrl={effectiveAvatarUrl} displayName={displayName} />
 
-        <Card className="shadow-none">
-          <CardContent className="flex items-center justify-between gap-3 border-none px-4 py-3">
-            <div className="flex items-center gap-3">
-              <ProfileImage
-                src={effectiveAvatarUrl}
-                alt={displayName}
-                className="h-8 w-8 flex-shrink-0 rounded-full border border-muted"
-              />
-              <div className="flex flex-col">
-                <span className="text-sm text-foreground-light">Signed in as</span>
-                <span className="text-sm font-medium text-foreground">{displayName}</span>
-              </div>
-            </div>
-            <Button
-              type="primary"
-              loading={effectiveIsJoining}
-              disabled={effectiveIsJoining}
-              onClick={handleJoinOrganization}
-            >
-              Accept
-            </Button>
-          </CardContent>
-        </Card>
-      </CardContent>
-
-      <CardFooter className="justify-center">
+      <div className="flex flex-col gap-2">
+        <Button
+          type="primary"
+          block
+          loading={effectiveIsJoining}
+          disabled={effectiveIsJoining}
+          onClick={handleJoinOrganization}
+        >
+          Accept invite
+        </Button>
         <Button asChild type="text" block>
           <Link href="/projects">Decline</Link>
         </Button>
-      </CardFooter>
-    </>
+      </div>
+    </div>
   )
 }

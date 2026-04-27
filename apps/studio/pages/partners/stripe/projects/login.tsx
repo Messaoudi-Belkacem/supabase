@@ -14,13 +14,13 @@ import {
 import { Admonition, ShimmeringLoader } from 'ui-patterns'
 
 import {
+  InterstitialAccountRow,
   InterstitialLayout,
   LogoPair,
   PartnerLogo,
   SupabaseLogo,
 } from '@/components/layouts/InterstitialLayout'
 import { ButtonTooltip } from '@/components/ui/ButtonTooltip'
-import { ProfileImage } from '@/components/ui/ProfileImage'
 import { useConfirmAccountRequestMutation } from '@/data/partners/stripe-projects-confirm-mutation'
 import { accountRequestQueryOptions } from '@/data/partners/stripe-projects-query'
 import { withAuth } from '@/hooks/misc/withAuth'
@@ -155,7 +155,9 @@ const StripeProjectsLoginPage: NextPageWithLayout = () => {
 
   const displayName = primaryEmail ?? username ?? effectiveAccountRequest?.email ?? ''
   const showSuccessBranch = effectiveIsSuccess && !effectiveIsConfirmed
-  const interstitialDescription = effectiveIsConfirmed ? undefined : 'Wants to connect to Supabase'
+  const interstitialDescription = effectiveIsConfirmed
+    ? 'Is connected to Supabase'
+    : 'Wants to connect to Supabase'
 
   return (
     <>
@@ -222,8 +224,7 @@ const StripeProjectsLoginPage: NextPageWithLayout = () => {
           {effectiveIsConfirmed && (
             <Admonition
               type="success"
-              title="Connection confirmed"
-              description="Stripe Projects is connected to Supabase. You can close this tab."
+              description="Stripe Projects is now connected to Supabase. You can close this tab."
             />
           )}
 
@@ -254,7 +255,6 @@ const StripeProjectsLoginPage: NextPageWithLayout = () => {
             <div className="flex flex-col gap-3">
               <Admonition
                 type="tip"
-                title="Confirm connection"
                 description={
                   <>
                     <span className="font-medium text-foreground">{linkedOrg.name}</span> is already
@@ -281,33 +281,27 @@ const StripeProjectsLoginPage: NextPageWithLayout = () => {
           {/* Pending — new org will be created */}
           {showSuccessBranch && emailMatches && !linkedOrg && (
             <div className="flex flex-col gap-6">
-              {/* Current user */}
-              <div className="flex items-center gap-3 rounded-lg border p-3">
-                <ProfileImage
-                  src={avatarUrl}
-                  alt={displayName}
-                  className="size-9 flex-shrink-0 rounded-full border"
-                />
-                <div className="min-w-0 flex-1">
-                  <p className="text-xs text-foreground-light">Signed in as</p>
-                  <p className="truncate text-sm text-foreground">
-                    {displayName || <span className="invisible">Loading...</span>}
-                  </p>
-                </div>
-                <ButtonTooltip
-                  type="text"
-                  size="small"
-                  className="h-8 w-8 px-0"
-                  onClick={() => signOut()}
-                  icon={<LogOut size={16} strokeWidth={1.5} className="text-foreground-lighter" />}
-                  tooltip={{
-                    content: {
-                      side: 'top',
-                      text: 'Sign out',
-                    },
-                  }}
-                />
-              </div>
+              <InterstitialAccountRow
+                avatarUrl={avatarUrl}
+                displayName={displayName}
+                action={
+                  <ButtonTooltip
+                    type="text"
+                    size="small"
+                    className="h-8 w-8 px-0"
+                    onClick={() => signOut()}
+                    icon={
+                      <LogOut size={16} strokeWidth={1.5} className="text-foreground-lighter" />
+                    }
+                    tooltip={{
+                      content: {
+                        side: 'top',
+                        text: 'Sign out',
+                      },
+                    }}
+                  />
+                }
+              />
 
               {/* TODO Extract into helper? */}
               <div className="flex flex-col gap-2">

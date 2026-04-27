@@ -1,8 +1,7 @@
 import { useRouter } from 'next/router'
-import { Button, CardContent } from 'ui'
+import { Button } from 'ui'
 import { Admonition } from 'ui-patterns'
 
-import AlertError from '@/components/ui/AlertError'
 import { OrganizationInviteByToken } from '@/data/organization-members/organization-invitation-token-query'
 import { useSignOut } from '@/lib/auth'
 import { useProfile } from '@/lib/profile'
@@ -40,66 +39,51 @@ export const OrganizationInviteError = ({
 
   if (isError) {
     return (
-      <CardContent>
-        <AlertError error={error} subject="Failed to retrieve token" />
-      </CardContent>
+      <Admonition
+        type="danger"
+        description={error?.message ?? 'Open the full invite link again, or ask for a new invite.'}
+      />
     )
   }
 
   if (!data?.email_match) {
     return (
-      <CardContent>
+      <div className="flex flex-col gap-3">
         <Admonition
           type="warning"
           title="Wrong account"
           description={
-            <>
-              <p>
-                This invite was sent to a different email address from the one you are using now.
-              </p>
-              {displayedProfileEmail && (
-                <p>
-                  You are currently signed in as{' '}
-                  <span className="font-medium text-foreground">{displayedProfileEmail}</span>.
-                </p>
-              )}
-              <p>Sign out, then sign in with the email address that received the invite.</p>
-            </>
-          }
-          actions={
-            <Button type="default" onClick={handleSignOut}>
-              Sign out
-            </Button>
+            displayedProfileEmail ? (
+              <>
+                You are signed in as{' '}
+                <span className="font-medium text-foreground">{displayedProfileEmail}</span>. Sign
+                in with the email address that received this invite.
+              </>
+            ) : (
+              'Sign in with the email address that received this invite.'
+            )
           }
         />
-      </CardContent>
+        <Button type="default" block onClick={handleSignOut}>
+          Sign out
+        </Button>
+      </div>
     )
   }
 
   if (data.expired_token) {
     return (
-      <CardContent>
-        <Admonition
-          type="warning"
-          title="Invite expired"
-          description="Ask the organisation owner to send you a new invite."
-        />
-      </CardContent>
+      <Admonition
+        type="warning"
+        description="Ask the organization owner to send you a new invite."
+      />
     )
   }
 
   return (
-    <CardContent>
-      <Admonition
-        type="warning"
-        title="Invite invalid"
-        description={
-          <>
-            <p>Try opening the full link from the invite email again.</p>
-            <p>If that still does not work, ask the organisation owner to send a new invite.</p>
-          </>
-        }
-      />
-    </CardContent>
+    <Admonition
+      type="warning"
+      description="Open the full invite link again, or ask the organization owner for a new invite."
+    />
   )
 }
