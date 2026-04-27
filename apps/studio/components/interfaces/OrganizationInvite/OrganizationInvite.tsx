@@ -155,6 +155,13 @@ const getMockState = (value: unknown): MockState | undefined => {
   return typeof value === 'string' && value in INVITE_MOCKS ? (value as MockState) : undefined
 }
 
+const isTemporaryMockPreviewEnabled = () => {
+  if (process.env.NEXT_PUBLIC_ENVIRONMENT !== 'prod') return true
+  if (typeof window === 'undefined') return false
+
+  return window.location.hostname.endsWith('.vercel.app')
+}
+
 export const OrganizationInvite = () => {
   const router = useRouter()
   const isLoggedIn = useIsLoggedIn()
@@ -168,7 +175,7 @@ export const OrganizationInvite = () => {
 
   const mockParamFromQuery = getMockState(router.query.mock)
   const isMockMode =
-    process.env.NODE_ENV !== 'production' && hasMounted && router.isReady && !!mockParamFromQuery
+    isTemporaryMockPreviewEnabled() && hasMounted && router.isReady && !!mockParamFromQuery
   const mockParam = isMockMode ? mockParamFromQuery : undefined
   const mockConfig = mockParam ? INVITE_MOCKS[mockParam] : undefined
 

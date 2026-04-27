@@ -75,6 +75,13 @@ const getMockState = (value: unknown): MockState | undefined => {
   return typeof value === 'string' && value in MOCK_RESPONSES ? (value as MockState) : undefined
 }
 
+const isTemporaryMockPreviewEnabled = () => {
+  if (process.env.NEXT_PUBLIC_ENVIRONMENT !== 'prod') return true
+  if (typeof window === 'undefined') return false
+
+  return window.location.hostname.endsWith('.vercel.app')
+}
+
 const StripeProjectsLoginPage: NextPageWithLayout = () => {
   const router = useRouter()
   const { ar_id } = useParams()
@@ -87,8 +94,8 @@ const StripeProjectsLoginPage: NextPageWithLayout = () => {
   const [mockConfirmed, setMockConfirmed] = useState(false)
 
   const mockParamFromQuery = getMockState(router.query.mock)
-  const isMockMode =
-    process.env.NODE_ENV !== 'production' && hasMounted && router.isReady && !!mockParamFromQuery
+  const hasMockParam = isTemporaryMockPreviewEnabled() && router.isReady && !!mockParamFromQuery
+  const isMockMode = hasMounted && hasMockParam
   const mockParam = isMockMode ? mockParamFromQuery : undefined
 
   useEffect(() => {
@@ -108,7 +115,7 @@ const StripeProjectsLoginPage: NextPageWithLayout = () => {
     error,
   } = useQuery({
     ...accountRequestQueryOptions({ arId: ar_id }),
-    enabled: !isMockMode && typeof ar_id !== 'undefined',
+    enabled: !hasMockParam && typeof ar_id !== 'undefined',
   })
 
   const {
@@ -119,13 +126,13 @@ const StripeProjectsLoginPage: NextPageWithLayout = () => {
 
   useEffect(() => {
     if (!router.isReady) return
-    if (isMockMode) return
+    if (hasMockParam) return
 
     if (!ar_id) {
       router.push('/404')
       return
     }
-  }, [router.isReady, ar_id, isMockMode, router])
+  }, [router.isReady, ar_id, hasMockParam, router])
 
   const handleApprove = async () => {
     if (isMockMode) {
