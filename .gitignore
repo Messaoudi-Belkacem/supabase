@@ -125,10 +125,10 @@ next-env.d.ts
 CLAUDE.md
 !.claude/CLAUDE.md
 
-#include template .env file for docker-compose
-!docker/.env
-!docker/supabase/.env
-!docker/supabase-traefik/.env
+# Keep env files local and secure
+docker/.env
+docker/supabase/.env
+docker/supabase-traefik/.env
 
 # Supabase
 **/supabase/.branches
