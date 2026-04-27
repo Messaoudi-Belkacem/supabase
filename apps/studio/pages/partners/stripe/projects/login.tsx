@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 import { useParams } from 'common'
-import { CheckCircle2, LogOut } from 'lucide-react'
+import { LogOut } from 'lucide-react'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import {
@@ -10,9 +10,8 @@ import {
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
   DropdownMenuTrigger,
-  LogoLoader,
 } from 'ui'
-import { Admonition } from 'ui-patterns'
+import { Admonition, ShimmeringLoader } from 'ui-patterns'
 
 import {
   InterstitialLayout,
@@ -146,6 +145,7 @@ const StripeProjectsLoginPage: NextPageWithLayout = () => {
 
   const displayName = primaryEmail ?? username ?? ''
   const showSuccessBranch = effectiveIsSuccess && !effectiveIsConfirmed
+  const interstitialDescription = effectiveIsConfirmed ? undefined : 'Wants to connect to Supabase'
 
   return (
     <>
@@ -179,150 +179,158 @@ const StripeProjectsLoginPage: NextPageWithLayout = () => {
         </DropdownMenu>
       )}
 
-      <div className="px-6 pb-6">
-        {/* Loading */}
-        {effectiveIsPending && (
-          <div className="flex flex-col items-center gap-3 py-4">
-            <LogoLoader />
-          </div>
-        )}
-
-        {/* Success */}
-        {effectiveIsConfirmed && (
-          <div className="py-4 text-center">
-            <div className="mb-4 flex justify-center">
-              <div className="flex size-14 items-center justify-center rounded-full bg-brand-200">
-                <CheckCircle2 className="size-7 text-brand" />
+      <InterstitialLayout
+        logo={
+          <LogoPair
+            left={<PartnerLogo src={`${BASE_PATH}/img/icons/stripe-icon.svg`} alt="Stripe" />}
+            right={<SupabaseLogo />}
+          />
+        }
+        title="Stripe Projects"
+        description={interstitialDescription}
+      >
+        <div className="px-6 pb-6">
+          {/* Loading */}
+          {effectiveIsPending && (
+            <div className="flex flex-col gap-6">
+              <div className="flex items-center gap-3 rounded-lg border border-secondary p-3">
+                <ShimmeringLoader className="size-9 flex-shrink-0 rounded-full py-0" />
+                <div className="min-w-0 flex-1 space-y-2">
+                  <ShimmeringLoader className="h-3 w-20 py-0" />
+                  <ShimmeringLoader className="h-4 w-40 max-w-full py-0" />
+                </div>
+                <div className="h-8 w-8 flex-shrink-0" />
+              </div>
+              <div className="flex flex-col gap-2">
+                <ShimmeringLoader className="h-10 w-full py-0" />
+                <ShimmeringLoader className="h-10 w-full py-0" />
               </div>
             </div>
-            <p className="text-lg font-semibold text-foreground">Stripe connected</p>
-            <p className="mt-1 text-sm text-foreground-light">You can close this tab.</p>
-          </div>
-        )}
+          )}
 
-        {/* Wrong account */}
-        {showSuccessBranch && !emailMatches && (
-          <div className="flex flex-col gap-3">
+          {/* Success */}
+          {effectiveIsConfirmed && (
             <Admonition
-              type="warning"
-              title="Wrong account"
-              description={
-                <>
-                  Sign in as{' '}
-                  <span className="font-medium text-foreground">
-                    {effectiveAccountRequest?.email}
-                  </span>{' '}
-                  to continue.
-                </>
-              }
+              type="success"
+              title="Connection confirmed"
+              description="Stripe Projects is connected to Supabase. You can close this tab."
             />
-            <Button type="default" block onClick={() => signOut()}>
-              Sign out
-            </Button>
-          </div>
-        )}
+          )}
 
-        {/* Linked — org already connected */}
-        {showSuccessBranch && emailMatches && linkedOrg && (
-          <div className="flex flex-col gap-3">
-            <Admonition
-              type="tip"
-              title="Confirm connection"
-              description={
-                <>
-                  <span className="font-medium text-foreground">{linkedOrg.name}</span> is already
-                  linked to this Stripe account, and just needs to be confirmed.
-                </>
-              }
-            />
-            <div className="flex flex-col gap-2">
-              <Button type="primary" block loading={effectiveIsConfirming} onClick={handleApprove}>
-                Confirm
-              </Button>
-              <Button type="text" block onClick={() => router.push('/')}>
-                Cancel
+          {/* Wrong account */}
+          {showSuccessBranch && !emailMatches && (
+            <div className="flex flex-col gap-3">
+              <Admonition
+                type="warning"
+                title="Wrong account"
+                description={
+                  <>
+                    Sign in as{' '}
+                    <span className="font-medium text-foreground">
+                      {effectiveAccountRequest?.email}
+                    </span>{' '}
+                    to continue.
+                  </>
+                }
+              />
+              <Button type="default" block onClick={() => signOut()}>
+                Sign out
               </Button>
             </div>
-          </div>
-        )}
+          )}
 
-        {/* Pending — new org will be created */}
-        {showSuccessBranch && emailMatches && !linkedOrg && (
-          <div className="flex flex-col gap-6">
-            {/* Current user */}
-            <div className="flex items-center gap-3 rounded-lg border border-secondary p-3">
-              <ProfileImage
-                src={avatarUrl}
-                alt={displayName}
-                className="size-9 flex-shrink-0 rounded-full border"
+          {/* Linked — org already connected */}
+          {showSuccessBranch && emailMatches && linkedOrg && (
+            <div className="flex flex-col gap-3">
+              <Admonition
+                type="tip"
+                title="Confirm connection"
+                description={
+                  <>
+                    <span className="font-medium text-foreground">{linkedOrg.name}</span> is already
+                    linked to this Stripe account, and just needs to be confirmed.
+                  </>
+                }
               />
-              <div className="min-w-0 flex-1">
-                <p className="text-xs text-foreground-light">Signed in as</p>
-                <p className="truncate text-sm text-foreground">{displayName}</p>
+              <div className="flex flex-col gap-2">
+                <Button
+                  type="primary"
+                  block
+                  loading={effectiveIsConfirming}
+                  onClick={handleApprove}
+                >
+                  Confirm
+                </Button>
+                <Button type="text" block onClick={() => router.push('/')}>
+                  Cancel
+                </Button>
               </div>
-              <ButtonTooltip
-                type="text"
-                size="small"
-                className="h-8 w-8 px-0"
-                onClick={() => signOut()}
-                icon={<LogOut size={16} strokeWidth={1.5} className="text-foreground-lighter" />}
-                tooltip={{
-                  content: {
-                    side: 'top',
-                    text: 'Sign out',
-                  },
-                }}
+            </div>
+          )}
+
+          {/* Pending — new org will be created */}
+          {showSuccessBranch && emailMatches && !linkedOrg && (
+            <div className="flex flex-col gap-6">
+              {/* Current user */}
+              <div className="flex items-center gap-3 rounded-lg border p-3">
+                <ProfileImage
+                  src={avatarUrl}
+                  alt={displayName}
+                  className="size-9 flex-shrink-0 rounded-full border"
+                />
+                <div className="min-w-0 flex-1">
+                  <p className="text-xs text-foreground-light">Signed in as</p>
+                  <p className="truncate text-sm text-foreground">{displayName}</p>
+                </div>
+                <ButtonTooltip
+                  type="text"
+                  size="small"
+                  className="h-8 w-8 px-0"
+                  onClick={() => signOut()}
+                  icon={<LogOut size={16} strokeWidth={1.5} className="text-foreground-lighter" />}
+                  tooltip={{
+                    content: {
+                      side: 'top',
+                      text: 'Sign out',
+                    },
+                  }}
+                />
+              </div>
+
+              {/* TODO Extract into helper? */}
+              <div className="flex flex-col gap-2">
+                <Button
+                  type="primary"
+                  loading={effectiveIsConfirming}
+                  disabled={effectiveIsConfirming}
+                  onClick={handleApprove}
+                >
+                  Create organization
+                </Button>
+                <Button type="text" onClick={() => router.push('/')}>
+                  Cancel
+                </Button>
+              </div>
+            </div>
+          )}
+
+          {/* Error */}
+          {effectiveIsError && (
+            <div className="flex flex-col gap-3">
+              <Admonition
+                type="danger"
+                title="Unable to load authorization"
+                description={error?.message}
               />
-            </div>
-
-            {/* TODO Extract into helper? */}
-            <div className="flex flex-col gap-2">
-              <Button
-                type="primary"
-                loading={effectiveIsConfirming}
-                disabled={effectiveIsConfirming}
-                onClick={handleApprove}
-              >
-                Create organization
-              </Button>
-              <Button type="text" onClick={() => router.push('/')}>
-                Cancel
+              <Button type="default" block onClick={() => signOut()}>
+                Sign out
               </Button>
             </div>
-          </div>
-        )}
-
-        {/* Error */}
-        {effectiveIsError && (
-          <div className="flex flex-col gap-3">
-            <Admonition
-              type="danger"
-              title="Unable to load authorization"
-              description={error?.message}
-            />
-            <Button type="default" block onClick={() => signOut()}>
-              Sign out
-            </Button>
-          </div>
-        )}
-      </div>
+          )}
+        </div>
+      </InterstitialLayout>
     </>
   )
 }
-
-StripeProjectsLoginPage.getLayout = (page) => (
-  <InterstitialLayout
-    logo={
-      <LogoPair
-        left={<PartnerLogo src={`${BASE_PATH}/img/icons/stripe-icon.svg`} alt="Stripe" />}
-        right={<SupabaseLogo />}
-      />
-    }
-    title="Stripe Projects"
-    description="wants to connect to Supabase"
-  >
-    {page}
-  </InterstitialLayout>
-)
 
 export default withAuth(StripeProjectsLoginPage)
