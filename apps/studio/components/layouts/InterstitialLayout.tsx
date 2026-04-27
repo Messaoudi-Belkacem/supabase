@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { ArrowRightLeft } from 'lucide-react'
-import { useEffect, useRef, useState, type PropsWithChildren, type ReactNode } from 'react'
+import type { PropsWithChildren, ReactNode } from 'react'
 import { Card, CardDescription, CardHeader, CardTitle, cn } from 'ui'
 
 import { BASE_PATH } from '@/lib/constants'
@@ -26,53 +26,29 @@ export const InterstitialLayout = ({
   description,
   children,
 }: PropsWithChildren<InterstitialLayoutProps>) => {
-  const contentRef = useRef<HTMLDivElement>(null)
-  const [cardHeight, setCardHeight] = useState<number>()
-
-  useEffect(() => {
-    const content = contentRef.current
-    if (!content) return
-
-    const updateHeight = () => {
-      const nextHeight = content.getBoundingClientRect().height
-      setCardHeight((currentHeight) => (currentHeight === nextHeight ? currentHeight : nextHeight))
-    }
-
-    updateHeight()
-
-    if (typeof ResizeObserver === 'undefined') return
-
-    const observer = new ResizeObserver(updateHeight)
-    observer.observe(content)
-
-    return () => observer.disconnect()
-  }, [])
-
   return (
     <div className="flex min-h-screen w-full items-center justify-center bg-studio px-5">
       <MotionCard
-        animate={cardHeight ? { height: cardHeight } : undefined}
-        transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
-        className="md:w-[400px]"
+        layout="size"
+        transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+        className="overflow-hidden md:w-[400px]"
       >
-        <div ref={contentRef}>
-          {(logo || title || description) && (
-            <CardHeader className="font-normal items-center gap-0 px-6 py-6 text-center [--card-padding-x:1.5rem] border-0">
-              {logo && <div className="mb-4 flex justify-center">{logo}</div>}
-              {title && (
-                <CardTitle className="font-sans tracking-tight text-balance text-lg font-medium normal-case text-foreground">
-                  {title}
-                </CardTitle>
-              )}
-              {description && (
-                <CardDescription className="!m-0 px-3 !text-balance text-sm text-foreground-lighter">
-                  {description}
-                </CardDescription>
-              )}
-            </CardHeader>
-          )}
-          {children}
-        </div>
+        {(logo || title || description) && (
+          <CardHeader className="font-normal items-center gap-0 px-6 py-6 text-center [--card-padding-x:1.5rem] border-0">
+            {logo && <div className="mb-4 flex justify-center">{logo}</div>}
+            {title && (
+              <CardTitle className="font-sans tracking-tight text-balance text-lg font-medium normal-case text-foreground">
+                {title}
+              </CardTitle>
+            )}
+            {description && (
+              <CardDescription className="!m-0 px-3 !text-balance text-sm text-foreground-lighter">
+                {description}
+              </CardDescription>
+            )}
+          </CardHeader>
+        )}
+        {children}
       </MotionCard>
     </div>
   )

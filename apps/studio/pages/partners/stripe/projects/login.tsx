@@ -71,6 +71,10 @@ const MOCK_RESPONSES = {
 
 type MockState = keyof typeof MOCK_RESPONSES
 
+const getMockState = (value: unknown): MockState | undefined => {
+  return typeof value === 'string' && value in MOCK_RESPONSES ? (value as MockState) : undefined
+}
+
 const StripeProjectsLoginPage: NextPageWithLayout = () => {
   const router = useRouter()
   const { ar_id } = useParams()
@@ -78,12 +82,18 @@ const StripeProjectsLoginPage: NextPageWithLayout = () => {
   const signOut = useSignOut()
   const { username, primaryEmail, avatarUrl } = useProfileNameAndPicture()
 
-  const mockParam = router.query.mock as MockState | undefined
-  const isMockMode =
-    process.env.NODE_ENV !== 'production' && !!mockParam && mockParam in MOCK_RESPONSES
-
+  const [hasMounted, setHasMounted] = useState(false)
   const [mockConfirming, setMockConfirming] = useState(false)
   const [mockConfirmed, setMockConfirmed] = useState(false)
+
+  const mockParamFromQuery = getMockState(router.query.mock)
+  const isMockMode =
+    process.env.NODE_ENV !== 'production' && hasMounted && router.isReady && !!mockParamFromQuery
+  const mockParam = isMockMode ? mockParamFromQuery : undefined
+
+  useEffect(() => {
+    setHasMounted(true)
+  }, [])
 
   useEffect(() => {
     setMockConfirming(false)
@@ -134,7 +144,7 @@ const StripeProjectsLoginPage: NextPageWithLayout = () => {
   const effectiveAccountRequest = isMockMode
     ? MOCK_RESPONSES[mockParam as MockState]
     : accountRequest
-  const effectiveIsPending = isMockMode ? false : isPending
+  const effectiveIsPending = isMockMode ? false : router.isReady && isPending
   const effectiveIsSuccess = isMockMode ? mockParam !== 'success' : isSuccess
   const effectiveIsConfirmed = isMockMode ? mockParam === 'success' || mockConfirmed : isConfirmed
   const effectiveIsConfirming = isMockMode ? mockConfirming : isConfirming
@@ -143,7 +153,7 @@ const StripeProjectsLoginPage: NextPageWithLayout = () => {
   const linkedOrg = effectiveAccountRequest?.linked_organization
   const emailMatches = effectiveAccountRequest?.email_matches ?? false
 
-  const displayName = primaryEmail ?? username ?? ''
+  const displayName = primaryEmail ?? username ?? effectiveAccountRequest?.email ?? ''
   const showSuccessBranch = effectiveIsSuccess && !effectiveIsConfirmed
   const interstitialDescription = effectiveIsConfirmed ? undefined : 'Wants to connect to Supabase'
 
@@ -280,7 +290,9 @@ const StripeProjectsLoginPage: NextPageWithLayout = () => {
                 />
                 <div className="min-w-0 flex-1">
                   <p className="text-xs text-foreground-light">Signed in as</p>
-                  <p className="truncate text-sm text-foreground">{displayName}</p>
+                  <p className="truncate text-sm text-foreground">
+                    {displayName || <span className="invisible">Loading...</span>}
+                  </p>
                 </div>
                 <ButtonTooltip
                   type="text"
