@@ -25,17 +25,17 @@ export const InterstitialLayout = ({
 }: PropsWithChildren<InterstitialLayoutProps>) => {
   return (
     <div className="flex min-h-screen w-full items-center justify-center bg-studio px-5">
-      <Card className="w-full rounded-xl shadow md:w-[400px]">
+      <Card className="md:w-[400px]">
         {(logo || title || description) && (
-          <CardHeader className="items-center gap-0 px-6 py-6 text-center [--card-padding-x:1.5rem]">
+          <CardHeader className="font-normal items-center gap-0 px-6 py-6 text-center [--card-padding-x:1.5rem] border-0">
             {logo && <div className="mb-4 flex justify-center">{logo}</div>}
             {title && (
-              <CardTitle className="text-balance text-lg font-semibold normal-case text-foreground">
+              <CardTitle className="font-sans tracking-tight text-balance text-lg font-medium normal-case text-foreground">
                 {title}
               </CardTitle>
             )}
             {description && (
-              <CardDescription className="text-balance text-sm text-foreground-light">
+              <CardDescription className="!m-0 px-3 !text-balance text-sm text-foreground-lighter">
                 {description}
               </CardDescription>
             )}

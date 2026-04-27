@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 import { useParams } from 'common'
-import { CheckCircle2 } from 'lucide-react'
+import { CheckCircle2, LogOut } from 'lucide-react'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import {
@@ -20,6 +20,7 @@ import {
   PartnerLogo,
   SupabaseLogo,
 } from '@/components/layouts/InterstitialLayout'
+import { ButtonTooltip } from '@/components/ui/ButtonTooltip'
 import { ProfileImage } from '@/components/ui/ProfileImage'
 import { useConfirmAccountRequestMutation } from '@/data/partners/stripe-projects-confirm-mutation'
 import { accountRequestQueryOptions } from '@/data/partners/stripe-projects-query'
@@ -226,64 +227,68 @@ const StripeProjectsLoginPage: NextPageWithLayout = () => {
           <div className="flex flex-col gap-3">
             <Admonition
               type="tip"
-              title="Already connected"
+              title="Confirm connection"
               description={
                 <>
-                  <span className="font-medium text-foreground">{linkedOrg.name}</span> is linked to
-                  this Stripe account.
+                  <span className="font-medium text-foreground">{linkedOrg.name}</span> is already
+                  linked to this Stripe account, and just needs to be confirmed.
                 </>
               }
             />
-            <Button type="primary" block loading={effectiveIsConfirming} onClick={handleApprove}>
-              Continue to dashboard
-            </Button>
-            <Button type="text" block onClick={() => router.back()}>
-              Cancel
-            </Button>
+            <div className="flex flex-col gap-2">
+              <Button type="primary" block loading={effectiveIsConfirming} onClick={handleApprove}>
+                Confirm
+              </Button>
+              <Button type="text" block onClick={() => router.push('/')}>
+                Cancel
+              </Button>
+            </div>
           </div>
         )}
 
         {/* Pending — new org will be created */}
         {showSuccessBranch && emailMatches && !linkedOrg && (
-          <div className="flex flex-col gap-3">
-            {/* Signed-in-as row */}
-            <div className="flex items-center gap-3 rounded-lg border border-muted p-3">
+          <div className="flex flex-col gap-6">
+            {/* Current user */}
+            <div className="flex items-center gap-3 rounded-lg border border-secondary p-3">
               <ProfileImage
                 src={avatarUrl}
                 alt={displayName}
-                className="size-9 flex-shrink-0 rounded-full border border-muted"
+                className="size-9 flex-shrink-0 rounded-full border"
               />
               <div className="min-w-0 flex-1">
                 <p className="text-xs text-foreground-light">Signed in as</p>
-                <p className="truncate text-sm font-medium text-foreground">{displayName}</p>
+                <p className="truncate text-sm text-foreground">{displayName}</p>
               </div>
+              <ButtonTooltip
+                type="text"
+                size="small"
+                className="h-8 w-8 px-0"
+                onClick={() => signOut()}
+                icon={<LogOut size={16} strokeWidth={1.5} className="text-foreground-lighter" />}
+                tooltip={{
+                  content: {
+                    side: 'top',
+                    text: 'Sign out',
+                  },
+                }}
+              />
+            </div>
+
+            {/* TODO Extract into helper? */}
+            <div className="flex flex-col gap-2">
               <Button
                 type="primary"
                 loading={effectiveIsConfirming}
                 disabled={effectiveIsConfirming}
                 onClick={handleApprove}
               >
-                Continue
+                Create organization
+              </Button>
+              <Button type="text" onClick={() => router.push('/')}>
+                Cancel
               </Button>
             </div>
-
-            {/* "or" divider */}
-            <div className="relative my-1">
-              <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-muted" />
-              </div>
-              <div className="relative flex justify-center text-xs">
-                <span className="bg-surface-100 px-2 text-foreground-muted">or</span>
-              </div>
-            </div>
-
-            <Button type="default" block onClick={() => signOut()}>
-              Use a different account
-            </Button>
-
-            <p className="text-center text-xs text-foreground-muted text-balance">
-              A new Supabase organization will be created and linked to your Stripe account.
-            </p>
           </div>
         )}
 
@@ -313,8 +318,8 @@ StripeProjectsLoginPage.getLayout = (page) => (
         right={<SupabaseLogo />}
       />
     }
-    title="Stripe"
-    description="wants to create a new Supabase organization"
+    title="Stripe Projects"
+    description="wants to connect to Supabase"
   >
     {page}
   </InterstitialLayout>
