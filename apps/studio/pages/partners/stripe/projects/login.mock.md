@@ -30,7 +30,7 @@ The `?mock=<state>` query param is read in `login.tsx` at runtime. When present:
 isMockMode        boolean — true when ?mock= is a known key
 mockParam         'pending' | 'linked' | 'wrong-account' | 'success'
 mockConfirming    useState — fake loading state for the confirm button
-mockConfirmed     useState — fake success state after clicking Approve/Continue
+mockConfirmed     useState — fake success state after clicking Create organization or Confirm
 effectiveAccountRequest   — MOCK_RESPONSES[mockParam] or real query data
 effectiveIsPending        — always false in mock mode
 effectiveIsSuccess        — true for all mock states except 'success'
@@ -59,7 +59,7 @@ from `apps/studio/data/partners/stripe-projects-query.ts`.
 }
 ```
 
-Renders: heading + "A new Supabase organization will be created..." + **Approve** button.
+Renders: the signed-in account row, **Create organization**, and **Cancel**.
 
 ### `linked` — org already connected to Stripe
 
@@ -74,7 +74,7 @@ Renders: heading + "A new Supabase organization will be created..." + **Approve*
 }
 ```
 
-Renders: "Acme Corp is already linked to your Stripe account." + **Continue** button.
+Renders: an admonition explaining that Acme Corp is already linked, plus **Confirm** and **Cancel**.
 
 ### `wrong-account` — signed in as the wrong user
 
@@ -89,14 +89,15 @@ Renders: "Acme Corp is already linked to your Stripe account." + **Continue** bu
 }
 ```
 
-Renders: warning alert "You need to be logged in as jane@acmecorp.io" + **Sign out** button.
+Renders: a warning admonition asking the user to sign in as `jane@acmecorp.io`, plus **Sign out**.
 
 ### `success` — post-confirm / window-close screen
 
 Uses the `pending` shape but bypasses `effectiveIsSuccess` entirely — `effectiveIsConfirmed`
 is set to `true` directly.
 
-Renders: "Organization Created" heading + "You can close this window."
+Renders: the success header description "Is connected to Supabase" plus a success admonition:
+"Stripe Projects is connected to Supabase. You can close this tab."
 
 ---
 
