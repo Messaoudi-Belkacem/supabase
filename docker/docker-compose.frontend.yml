@@ -1,0 +1,31 @@
+# Extends the base docker-compose.yml + docker-compose.caddy.yml to add:
+#   - the OTT CRM frontend container
+#   - two extra Caddy env vars (API_DOMAIN, STUDIO_DOMAIN)
+#
+# Usage:
+#   docker compose \
+#     -f docker-compose.yml \
+#     -f docker-compose.caddy.yml \
+#     -f docker-compose.frontend.yml \
+#     up -d
+
+services:
+
+  caddy:
+    environment:
+      API_DOMAIN: ${API_DOMAIN}
+      STUDIO_DOMAIN: ${STUDIO_DOMAIN}
+    depends_on:
+      frontend:
+        condition: service_healthy
+
+  frontend:
+    container_name: ott-frontend
+    image: ghcr.io/${GHCR_IMAGE}:latest
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost/ > /dev/null 2>&1"]
+      timeout: 5s
+      interval: 10s
+      retries: 5
+      start_period: 10s
